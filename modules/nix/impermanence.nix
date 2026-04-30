@@ -10,22 +10,24 @@
     let
       inherit (lib) mkOption types unique;
       inherit (types) listOf str;
-      const = config.constants;
+      cfg = config.custom.impermanence;
     in
     {
-      options.constants = {
+      imports = [ inputs.impermanence.nixosModules.impermanence ];
+
+      options.custom.impermanence = {
         root = {
           directories = mkOption {
             type = listOf str;
             default = [ ];
             description = "Directories to persist in root directory.";
           };
-        };
 
-        files = mkOption {
-          type = listOf str;
-          default = [ ];
-          description = "Files to persist in root directory.";
+          files = mkOption {
+            type = listOf str;
+            default = [ ];
+            description = "Files to persist in root directory.";
+          };
         };
       };
 
@@ -58,7 +60,7 @@
               "/var/lib/nixos"
               "/var/lib/systemd"
             ]
-            ++ const.impermanence.root.directories
+            ++ cfg.root.directories
           );
 
           files = unique (
@@ -69,7 +71,7 @@
               "/etc/ssh/ssh_host_ed25519_key"
               "/etc/ssh/ssh_host_ed25519_key.pub"
             ]
-            ++ const.impermanence.root.files
+            ++ cfg.root.files
           );
 
         };
