@@ -9,6 +9,7 @@
         users
         locale
         impermanence
+        sops
       ]
       ++ (with self.modules.generic; [
         constants
