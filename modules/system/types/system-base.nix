@@ -20,16 +20,36 @@
     system.stateVersion = "24.11";
 
     # Enable flakes
-    nix.settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
+    nix = {
+      channel.enable = false;
 
-      trusted-users = [
-        "root"
-        "@wheel"
-      ];
+      optimise = {
+        automatic = true;
+        dates = "20:00";
+      };
+
+      gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 7d";
+      };
+
+      settings = {
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+
+        trusted-users = [
+          "root"
+          "@wheel"
+        ];
+
+        use-xdg-base-directories = true;
+      };
+
+      # Disable git warning
+      extraOptions = "warn-dirty = false";
     };
   };
 }
