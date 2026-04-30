@@ -7,6 +7,8 @@
         boot
         hjem
         users
+        locale
+        impermanence
       ]
       ++ (with self.modules.generic; [
         constants
