@@ -6,6 +6,8 @@
 
       niri
       foot
+
+      librewolf
     ];
   };
 }
