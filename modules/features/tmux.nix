@@ -1,0 +1,104 @@
+{ self, inputs, ... }:
+{
+  flake.modules.nixos.tmux =
+    { pkgs, ... }:
+    {
+      hj = {
+        packages = with pkgs; [ tmux ];
+        files.".config/tmux/tmux.conf".text = /* bash */ ''
+          # Enable 256 color support
+          set -g default-terminal "tmux-256color"
+          set -ga terminal-overrides ",*:RGB"
+
+          # Enable mouse support
+          set -g mouse on
+
+          # Enable clipboard
+          set -g set-clipboard on
+
+          set -s escape-time 1
+
+          # Set prefix
+          unbind C-b
+          set -g prefix C-j
+          bind-key C-j send-prefix
+
+          # Vim-style pane navigation
+          bind -n M-h select-pane -L
+          bind -n M-j select-pane -D
+          bind -n M-k select-pane -U
+          bind -n M-l select-pane -R
+
+          # Split windows
+          unbind %
+          unbind '"'
+          bind v split-window -h -c "#{pane_current_path}"
+          bind s split-window -v -c "#{pane_current_path}"
+
+          # Alt+direction to switch panes
+          bind -n S-Left previous-window 
+          bind -n S-Right next-window 
+
+          # Alt+number to select window
+          bind -n M-1 select-window -t 1
+          bind -n M-2 select-window -t 2
+          bind -n M-3 select-window -t 3
+          bind -n M-4 select-window -t 4
+          bind -n M-5 select-window -t 5
+          bind -n M-6 select-window -t 6
+          bind -n M-7 select-window -t 7
+          bind -n M-8 select-window -t 8
+          bind -n M-9 select-window -t 9
+
+          # Change index to 1 for comfort
+          set -g base-index 1
+          set -g pane-base-index 1
+          set-window-option -g pane-base-index 1
+          set-option -g renumber-windows on
+
+          # Vim-style copy/paste
+          set-window-option -g mode-keys vi
+          bind-key -T copy-mode-vi v send-keys -X begin-selection
+          bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+          bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+          unbind -T copy-mode-vi MouseDragEnd1Pane
+
+          # Open terminal popup
+          unbind t
+          bind-key t display-popup -d "#{pane_current_path}"
+
+          # Open LazyGit popup
+          bind-key g display-popup -d "#{pane_current_path}" -w 80% -h 80% -E lazygit
+
+          # Status bar settings
+          set -g status on
+          set-option -g status-justify "left"
+          set-option -g status-position "top"
+          set -g status-left-length "100"
+          set -g status-right-length "100"
+
+          set -g status-left ""
+        '';
+      };
+    };
+
+  flake.modules.nixos.base16 =
+    { config, ... }:
+    let
+      clr = config.scheme.withHashtag;
+    in
+    {
+      hj.files.".config/tmux/tmux.conf".text = ''
+        set-option -g status-style "fg=${clr.base05},bg=${clr.base01}"
+
+        set -g message-style "fg=${clr.base0D},bg=${clr.base01},align=centre"
+        set -g message-command-style "fg=${clr.base0D},bg=${clr.base01},align=centre" 
+
+        set -g pane-border-style "fg=${clr.base01}"
+        set -g pane-active-border-style "fg=${clr.base0B}"
+
+        set -g window-status-current-format "#[fg=${clr.base0B}] #I:#W*" 
+        set -g status-right "#[fg=${clr.base0A}][#S] "
+      '';
+    };
+}
