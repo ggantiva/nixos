@@ -12,6 +12,8 @@
 
         base16
         librewolf
+
+        zoxide
         fzf
         zathura
       ];
