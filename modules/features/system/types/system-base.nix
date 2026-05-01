@@ -13,6 +13,7 @@
 
         tmux
         nvf
+        git
         bash
       ]
       ++ (with self.modules.generic; [
