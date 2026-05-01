@@ -12,6 +12,7 @@
 
         base16
         librewolf
+        fzf
       ];
 
       environment.systemPackages = with pkgs; [
