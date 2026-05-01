@@ -14,6 +14,12 @@
         viAlias = true;
         vimAlias = true;
 
+        # Enable Transparency
+        highlight = {
+          Normal.ctermbg = "NONE";
+          NormalNC.ctermbg = "NONE";
+        };
+
         options = {
           tabstop = 2;
           shiftwidth = 2;
