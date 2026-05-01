@@ -1,0 +1,209 @@
+// Check the wiki for a full description of the configuration:
+// https://niri-wm.github.io/niri/Configuration:-Introduction
+
+// Input device configuration.
+// https://niri-wm.github.io/niri/Configuration:-Input
+input {
+  keyboard {
+    xkb {
+      layout "us";
+      variant "altgr-intl";
+    }
+
+    repeat-rate 50;
+    repeat-delay  300;
+  }
+
+  mouse {
+    accel-profile "flat"
+  }
+
+  warp-mouse-to-focus mode="center-xy-always"
+  focus-follows-mouse max-scroll-amount="10%"
+}
+
+// Output configuration.
+// https://niri-wm.github.io/niri/Configuration:-Outputs
+output "HDMI-A-1" {
+  mode "1920x1080@75.000"
+  variable-refresh-rate on-demand=true
+}
+
+// Settings that influence how windows are positioned and sized.
+// https://niri-wm.github.io/niri/Configuration:-Layout
+layout {
+  gaps 10
+
+  always-center-single-column
+
+  default-column-width { proportion 0.5; }
+
+  preset-column-widths {
+    proportion 0.25
+    proportion 0.5
+    proportion 0.75
+  }
+
+  focus-ring {
+    width 3
+  }
+
+  struts {
+    left 25
+    right 25
+  }
+}
+
+hotkey-overlay {
+  skip-at-startup
+}
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+// Animation settings.
+// https://niri-wm.github.io/niri/Configuration:-Animations
+animations {
+  slowdown 0.8
+  workspace-switch {
+    off
+  }
+}
+
+overview {
+  zoom 0.25;
+}
+
+recent-windows {
+  off
+}
+
+gestures {
+  hot-corners {
+    off
+  }
+}
+
+cursor {
+  xcursor-theme "Simp1e-Dark"
+  xcursor-size 24
+}
+
+// Window rules let you adjust behavior for individual windows.
+// https://niri-wm.github.io/niri/Configuration:-Window-Rules
+
+// Open Maximized
+window-rule {
+  match app-id="discord"
+  match app-id="steam"
+  open-maximized true
+}
+
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+  match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+  open-floating true
+}
+
+// Fix Steam notifications
+window-rule {
+  match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+  default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
+// Rounded borders
+window-rule {
+  geometry-corner-radius 3
+  clip-to-geometry true
+}
+
+// Shadow for floating windows
+window-rule {
+  match is-floating=true
+  shadow {
+    on
+    spread 5
+    offset x=10 y=10
+    softness 15
+  }
+}
+
+binds {
+    // Launch apps
+    Mod+Space { spawn "foot"; }
+    Mod+D { spawn "fuzzel"; }
+    Mod+B { spawn "librewolf"; }
+    Mod+N { spawn "notes"; }
+    Mod+M { spawn "powermenu"; }
+    Mod+T { spawn "clock"; }
+
+    // Media control
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0 && wp-vol"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- -l 1.0 && wp-vol"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && togglemicrophone"; }
+
+    Mod+Q repeat=false { close-window; }
+
+    Mod+H     { focus-column-left-or-last; }
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    Mod+L     { focus-column-right-or-first; }
+
+    Mod+Shift+H     { move-column-left; }
+    Mod+Shift+J     { move-window-down; }
+    Mod+Shift+K     { move-window-up; }
+    Mod+Shift+L     { move-column-right; }
+
+    // You can refer to workspaces by index. However, keep in mind that
+    // niri is a dynamic workspace system, so these commands are kind of
+    // "best effort". Trying to refer to a workspace index bigger than
+    // the current workspace count will instead refer to the bottommost
+    // (empty) workspace.
+    //
+    // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
+    // will all refer to the 3rd workspace.
+    Mod+Y { focus-workspace 1; }
+    Mod+U { focus-workspace 2; }
+    Mod+I { focus-workspace 3; }
+    Mod+O { focus-workspace 4; }
+    Mod+P { focus-workspace 5; }
+    Mod+Shift+Y { move-column-to-workspace 1; }
+    Mod+Shift+U { move-column-to-workspace 2; }
+    Mod+Shift+I { move-column-to-workspace 3; }
+    Mod+Shift+O { move-column-to-workspace 4; }
+    Mod+Shift+P { move-column-to-workspace 5; }
+
+    // The following binds move the focused window in and out of a column.
+    // If the window is alone, they will consume it into the nearby column to the side.
+    // If the window is already in a column, they will expel it out.
+    Mod+Comma { consume-or-expel-window-left; }
+    Mod+Period { consume-or-expel-window-right; }
+
+    // Cycle through widths set in preset-column-widths.
+    Mod+R { switch-preset-column-width; }
+
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+
+    // Move the focused window between the floating and the tiling layout.
+    Mod+Shift+V       { toggle-window-floating; }
+    Mod+V { switch-focus-between-floating-and-tiling; }
+
+    Print { screenshot; }
+
+    // Applications such as remote-desktop clients and software KVM switches may
+    // request that niri stops processing the keyboard shortcuts defined here
+    // so they may, for example, forward the key presses as-is to a remote machine.
+    // It's a good idea to bind an escape hatch to toggle the inhibitor,
+    // so a buggy application can't hold your session hostage.
+    //
+    // The allow-inhibiting=false property can be applied to other binds as well,
+    // which ensures niri always processes them, even when an inhibitor is active.
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    // The quit action will show a confirmation dialog to avoid accidental exits.
+    Mod+Shift+E { quit; }
+    Ctrl+Alt+Delete { quit; }
+}
+
