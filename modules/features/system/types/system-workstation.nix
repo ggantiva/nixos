@@ -5,7 +5,6 @@
       system-base
 
       niri
-      noctalia
       foot
 
       librewolf
