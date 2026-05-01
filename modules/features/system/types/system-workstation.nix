@@ -10,6 +10,7 @@
         swaybg
         foot
         fuzzel
+        mako
 
         base16
         librewolf
