@@ -8,6 +8,7 @@
       foot
         swaybg
 
+        base16
       librewolf
     ];
   };
