@@ -23,4 +23,43 @@
 
       hj.files.".config/niri/config.kdl".source = ./niri.kdl;
     };
+
+  flake.modules.nixos.base16 =
+    { config, ... }:
+    let
+      clr = config.scheme.withHashtag;
+    in
+    {
+      hj.files.".config/niri/theme.kdl".text = ''
+        layout {
+          background-color "${clr.base00}"
+
+          focus-ring {
+            active-color "${clr.base08}"
+            width 3
+          }
+
+          insert-hint {
+            color "${clr.base08}"
+          }
+        }
+
+        overview {
+          zoom 0.25
+          backdrop-color "${clr.base00}"
+        }
+
+        // Shadow for floating windows
+        window-rule {
+          match is-floating=true
+          shadow {
+            on
+            color "${clr.base00}80"
+            spread 5
+            offset x=10 y=10
+            softness 15
+          }
+        }
+      '';
+    };
 }

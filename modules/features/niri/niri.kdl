@@ -1,5 +1,6 @@
 // Check the wiki for a full description of the configuration:
 // https://niri-wm.github.io/niri/Configuration:-Introduction
+include optional=true "~/.config/niri/theme.kdl"
 
 // Input device configuration.
 // https://niri-wm.github.io/niri/Configuration:-Input
@@ -44,10 +45,6 @@ layout {
     proportion 0.75
   }
 
-  focus-ring {
-    width 3
-  }
-
   struts {
     left 25
     right 25
@@ -69,10 +66,6 @@ animations {
   workspace-switch {
     off
   }
-}
-
-overview {
-  zoom 0.25;
 }
 
 recent-windows {
@@ -118,25 +111,12 @@ window-rule {
   clip-to-geometry true
 }
 
-// Shadow for floating windows
-window-rule {
-  match is-floating=true
-  shadow {
-    on
-    spread 5
-    offset x=10 y=10
-    softness 15
-  }
-}
-
 binds {
     // Launch apps
     Mod+Space { spawn "foot"; }
     Mod+D { spawn "fuzzel"; }
+    Mod+M { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; } 
     Mod+B { spawn "librewolf"; }
-    Mod+N { spawn "notes"; }
-    Mod+M { spawn "powermenu"; }
-    Mod+T { spawn "clock"; }
 
     // Media control
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0 && wp-vol"; }
