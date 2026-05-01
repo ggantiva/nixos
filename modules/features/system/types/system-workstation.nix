@@ -18,12 +18,12 @@
         zoxide
         fzf
         zathura
+        btop
       ];
 
       environment.systemPackages = with pkgs; [
         vesktop
         lazygit
-        btop
       ];
 
       fonts = {
