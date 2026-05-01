@@ -10,6 +10,8 @@
         locale
         impermanence
         sops
+
+        nvf
       ]
       ++ (with self.modules.generic; [
         constants
