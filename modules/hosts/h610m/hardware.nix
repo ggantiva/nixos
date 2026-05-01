@@ -1,6 +1,6 @@
 { self, inputs, ... }:
 {
-  flake.modules.nixos.h610m-hardware =
+  flake.modules.nixos.h610m =
     {
       config,
       lib,

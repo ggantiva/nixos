@@ -1,10 +1,7 @@
 { self, ... }:
 {
-  flake.modules.nixos.h610m-config = {
+  flake.modules.nixos.h610m = {
     imports = with self.modules.nixos; [
-      # Hardware configuration
-      h610m-hardware
-
       # System type
       system-base
     ];
