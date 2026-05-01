@@ -12,6 +12,7 @@
         sops
 
         nvf
+        bash
       ]
       ++ (with self.modules.generic; [
         constants
