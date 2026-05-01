@@ -1,0 +1,11 @@
+keys:
+  - &users:
+    - &ggantiva age1mthykpauy7elxz3dftg2n9pgpkwxj5v9qfdnn6847fy9k3euqu9qx5w8tz
+  - &hosts:
+    - &h610m age1s5xelkc7ax857qrfedwzq6hvc7hejw6cm7zc2kut9h2t3kqrnpfq632xxw
+creation_rules:
+  - path_regex: secrets.yaml$
+    key_groups:
+    - age:
+      - *ggantiva
+      - *h610m

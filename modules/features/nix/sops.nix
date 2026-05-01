@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ inputs, ... }:
 {
   flake.modules.nixos.sops = {
     imports = [
@@ -6,7 +6,7 @@
     ];
     services.openssh.generateHostKeys = true;
     sops = {
-      defaultSopsFile = ../../secrets.yaml;
+      defaultSopsFile = ../../../secrets.yaml;
       age = {
         # Automatically import host SSH keys as age keys
         sshKeyPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
