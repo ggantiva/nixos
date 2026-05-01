@@ -9,6 +9,7 @@
         niri
         swaybg
         foot
+        fuzzel
 
         base16
         librewolf
@@ -21,6 +22,7 @@
       environment.systemPackages = with pkgs; [
         vesktop
         lazygit
+        btop
       ];
     };
 }
