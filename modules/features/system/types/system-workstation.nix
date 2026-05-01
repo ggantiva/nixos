@@ -1,15 +1,21 @@
 { self, inputs, ... }:
 {
-  flake.modules.nixos.system-workstation = {
-    imports = with self.modules.nixos; [
-      system-base
+  flake.modules.nixos.system-workstation =
+    { pkgs, ... }:
+    {
+      imports = with self.modules.nixos; [
+        system-base
 
-      niri
-      foot
+        niri
         swaybg
+        foot
 
         base16
-      librewolf
-    ];
-  };
+        librewolf
+      ];
+
+      environment.systemPackages = with pkgs; [
+        vesktop
+      ];
+    };
 }
