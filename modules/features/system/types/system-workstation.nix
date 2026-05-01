@@ -13,6 +13,7 @@
         base16
         librewolf
         fzf
+        zathura
       ];
 
       environment.systemPackages = with pkgs; [
