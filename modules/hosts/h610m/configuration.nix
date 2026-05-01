@@ -3,7 +3,7 @@
   flake.modules.nixos.h610m = {
     imports = with self.modules.nixos; [
       # System type
-      system-base
+      system-workstation
     ];
 
     networking = {
