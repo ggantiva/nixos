@@ -6,6 +6,7 @@
 
       niri
       foot
+        swaybg
 
       librewolf
     ];
