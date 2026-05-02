@@ -3,6 +3,7 @@
   flake.modules.nixos.nvf = {
     imports = [
       inputs.nvf.nixosModules.default
+      self.modules.nixos.nvf-theme
       self.modules.nixos.nvf-languages
     ];
 
@@ -13,12 +14,6 @@
       settings.vim = {
         viAlias = true;
         vimAlias = true;
-
-        # Enable Transparency
-        highlight = {
-          Normal.ctermbg = "NONE";
-          NormalNC.ctermbg = "NONE";
-        };
 
         options = {
           tabstop = 2;
