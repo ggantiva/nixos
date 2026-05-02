@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ self, ... }:
 {
   flake.modules.nixos.system-workstation =
     { pkgs, ... }:
@@ -12,6 +12,7 @@
         foot
         fuzzel
         mako
+        osd
 
         base16
         librewolf
