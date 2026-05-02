@@ -49,12 +49,18 @@
           backdrop-color "${clr.base00}"
         }
 
-        // Shadow for floating windows
+        // Shadow and blur for floating windows
         window-rule {
           match is-floating=true
+          background-effect {
+            blur true
+            xray false
+          }
+
           shadow {
             on
             color "${clr.base00}80"
+            draw-behind-window false
             spread 5
             offset x=10 y=10
             softness 15
