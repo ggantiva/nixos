@@ -17,6 +17,8 @@
         base16
         librewolf
 
+        nvf
+        git
         zoxide
         fzf
         zathura
