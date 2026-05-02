@@ -34,7 +34,7 @@
     {
       hj.files.".config/fuzzel/fuzzel.ini".text = ''
         [colors]
-        background=${clr.base00}e6
+        background=${clr.base00}b3
         text=${clr.base05}ff
         placeholder=${clr.base03}ff
         prompt=${clr.base05}ff
@@ -47,4 +47,17 @@
         border=${clr.base08}ff
       '';
     };
+
+  flake.modules.nixos.niri = {
+    hj.files.".config/niri/theme.kdl".text = ''
+      layer-rule{
+        match namespace="^launcher$"
+
+        background-effect{
+          blur true
+          xray false
+        }
+      }
+    '';
+  };
 }
