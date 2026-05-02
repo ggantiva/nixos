@@ -4,6 +4,8 @@
     imports = with self.modules.nixos; [
       # System type
       system-workstation
+
+      steam
     ];
 
     networking = {
