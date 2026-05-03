@@ -6,9 +6,7 @@
       syn = config.services.syncthing;
     in
     {
-      imports = with self.modules.nixos; [
-        syncthing
-      ];
+      imports = with self.modules.nixos; [ syncthing ];
 
       services.syncthing = {
         cert = config.sops.secrets."syncthing/h610m/cert.pem".path;
@@ -23,12 +21,12 @@
         settings.folders = {
           "Notes" = {
             path = "${syn.dataDir}/Notes/";
-            devices = [ "HP-705M" ];
+            devices = [ "hp705" ];
           };
 
           "Documents" = {
             path = "${syn.dataDir}/Documents/";
-            devices = [ "HP-705M" ];
+            devices = [ "hp705" ];
           };
         };
       };
@@ -50,10 +48,6 @@
     services.syncthing.settings.devices = {
       h610m = {
         id = "YKJ2OD2-LTR4SON-P6JIOLJ-AFANF6U-BG2QZT3-J3YKLWJ-3GOR3YI-5QOADQX";
-      };
-
-      HP-705M = {
-        id = "IROUXZQ-M3ISI6B-O3EGOF7-OLKSBUR-VYOCTIN-RVOS3UH-RFL5LBA-TTYWWAE";
       };
     };
   };
