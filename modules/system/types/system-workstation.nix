@@ -14,6 +14,7 @@
         fuzzel
         mako
         osd
+        swaylock
 
         base16
         gtk
