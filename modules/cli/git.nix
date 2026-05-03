@@ -20,10 +20,6 @@
 
     hj.files = {
       ".ssh/config".text = ''
-        AddKeysToAgent yes
-        IdentitiesOnly yes
-        IdentityAgent none
-
         Host codeberg.org
           HostName codeberg.org
           user git
