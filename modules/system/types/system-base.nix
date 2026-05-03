@@ -10,6 +10,7 @@
         locale
         impermanence
         sops
+        ssh
 
         tmux
         bash
