@@ -16,6 +16,7 @@
         osd
 
         base16
+        gtk
         librewolf
 
         nvf
