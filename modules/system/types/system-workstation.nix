@@ -6,6 +6,7 @@
       imports = with self.modules.nixos; [
         system-base
         pipewire
+        yubikey
 
         ly
         niri
