@@ -13,7 +13,6 @@
           default-timeout=8000
           font=Noto Sans 12
           border-size=3
-          border-radius=3
         '';
       };
     };
@@ -38,9 +37,6 @@
       format=<b>%s</b>\n%b
 
       width=50
-      border-size=3
-      border-radius=0
-
       text-alignment=center
 
       [app-name=clock]
@@ -51,9 +47,6 @@
       format=<b>%s</b>\n%b
 
       width=125
-      border-size=3
-      border-radius=3
-
       text-alignment=center
 
       [app-name=volume group-index=0]
