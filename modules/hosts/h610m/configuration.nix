@@ -8,6 +8,7 @@
         system-workstation
 
         steam
+        bottles
       ];
 
       networking = {
