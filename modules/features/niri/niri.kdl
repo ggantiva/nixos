@@ -113,12 +113,6 @@ window-rule {
   default-floating-position x=10 y=10 relative-to="bottom-right"
 }
 
-// Rounded borders
-window-rule {
-  geometry-corner-radius 3
-  clip-to-geometry true
-}
-
 binds {
     // Launch apps
     Mod+Space { spawn "foot"; }
