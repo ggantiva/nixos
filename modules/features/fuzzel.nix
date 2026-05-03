@@ -22,7 +22,7 @@
 
           [border]
           width=3
-          radius=3
+          radius=0
         '';
       };
     };

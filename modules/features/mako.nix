@@ -36,7 +36,7 @@
 
       width=50
       border-size=3
-      border-radius=3
+      border-radius=0
 
       text-alignment=center
 
@@ -66,7 +66,7 @@
     {
       hj.files.".config/mako/config".text = ''
         text-color=${clr.base05}
-        background-color=${clr.base01}e6
+        background-color=${clr.base01}
         border-color=${clr.base08}
         progress-color=over ${clr.base08}e6
 
