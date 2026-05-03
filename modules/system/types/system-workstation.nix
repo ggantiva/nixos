@@ -15,6 +15,7 @@
         mako
         osd
         swaylock
+        swayidle
 
         base16
         gtk
