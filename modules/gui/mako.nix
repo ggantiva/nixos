@@ -1,12 +1,15 @@
 { self, inputs, ... }:
 {
   flake.modules.nixos.mako =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
+    let
+      inherit (lib) mkBefore;
+    in
     {
       fonts.packages = with pkgs; [ noto-fonts ];
       environment.systemPackages = with pkgs; [ mako ];
       hj = {
-        files.".config/mako/config".text = ''
+        files.".config/mako/config".text = mkBefore ''
           default-timeout=8000
           font=Noto Sans 12
           border-size=3
