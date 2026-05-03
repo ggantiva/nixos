@@ -7,6 +7,7 @@
         system-base
         pipewire
 
+        ly
         niri
         swaybg
         foot
