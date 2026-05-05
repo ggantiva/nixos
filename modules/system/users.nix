@@ -19,8 +19,8 @@
             initialHashedPassword = "$y$j9T$Azdmw8tO4lu5Ed9costZm1$KrD8XDq/Ht9417VaDuswaxbH9ctpZzIsobfeQMhHNY9";
             extraGroups = [ "wheel" ];
             openssh.authorizedKeys.keyFiles = [
-              "./id_blue.pub"
-              "./id_green.pub"
+              ./id_blue.pub
+              ./id_green.pub
             ];
           };
         };
