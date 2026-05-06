@@ -23,6 +23,6 @@
       }
     '';
 
-    custom.system.impermanence.root.directories = [ "/var/lib/vaultwarden" ];
+    custom.impermanence.root.directories = [ "/var/lib/vaultwarden" ];
   };
 }
