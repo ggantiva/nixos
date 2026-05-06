@@ -50,6 +50,14 @@
           allowDiscards = true;
           preLVM = true;
         };
+
+        cryptzfs1 = {
+          device = "/dev/disk/by-uuid/8cc053ef-079a-4bbc-b3eb-e08055da2ea1";
+        };
+
+        cryptzfs2 = {
+          device = "/dev/disk/by-uuid/7e2c3040-2f66-464f-a32c-4936fb61b76e";
+        };
       };
 
       fileSystems."/" = {
@@ -80,6 +88,11 @@
         device = "zroot/persist";
         fsType = "zfs";
         neededForBoot = true;
+      };
+
+      fileSystems."/data" = {
+        device = "zdata";
+        fsType = "zfs";
       };
 
       swapDevices = [
