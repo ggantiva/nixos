@@ -37,6 +37,7 @@
 
       # Not needed with LUKS
       boot.zfs.requestEncryptionCredentials = false;
+      boot.zfs.forceImportRoot = false;
 
       fileSystems."/" = {
         device = "zroot/root";

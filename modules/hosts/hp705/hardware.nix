@@ -42,6 +42,7 @@
 
       # Not needed with LUKS
       boot.zfs.requestEncryptionCredentials = false;
+      boot.zfs.forceImportRoot = false;
 
       boot.initrd.luks.devices = {
         cryptroot = {
