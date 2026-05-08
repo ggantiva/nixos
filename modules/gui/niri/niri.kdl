@@ -35,10 +35,12 @@ output "HDMI-A-1" {
 layout {
   gaps 10
 
+  focus-ring {
+    width 3
+  }
+
   always-center-single-column
-
   default-column-width { proportion 0.5; }
-
   preset-column-widths {
     proportion 0.25
     proportion 0.5
@@ -74,6 +76,14 @@ animations {
   window-close {
     off
   }
+
+  window-resize {
+    off
+  }
+
+  window-movement {
+    off
+  }
 }
 
 recent-windows {
@@ -93,6 +103,29 @@ cursor {
 
 // Window rules let you adjust behavior for individual windows.
 // https://niri-wm.github.io/niri/Configuration:-Window-Rules
+window-rule {
+  match is-floating=true
+  background-effect {
+    blur true
+    xray false
+  }
+  shadow {
+    on
+    draw-behind-window false
+    spread 5
+    offset x=10 y=10
+    softness 15
+  }
+}
+
+// Enable blur for launcher
+layer-rule {
+    match namespace="^launcher$"
+    background-effect {
+        blur true
+        xray false
+    }
+}
 
 // Open Maximized
 window-rule {

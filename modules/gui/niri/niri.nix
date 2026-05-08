@@ -34,36 +34,16 @@
         layout {
           background-color "${clr.base00}"
 
+          shadow {
+            color "${clr.base00}"
+          }
+
           focus-ring {
             active-color "${clr.base08}"
-            width 3
           }
 
           insert-hint {
             color "${clr.base08}"
-          }
-        }
-
-        overview {
-          zoom 0.25
-          backdrop-color "${clr.base00}"
-        }
-
-        // Shadow and blur for floating windows
-        window-rule {
-          match is-floating=true
-          background-effect {
-            blur true
-            xray false
-          }
-
-          shadow {
-            on
-            color "${clr.base00}80"
-            draw-behind-window false
-            spread 5
-            offset x=10 y=10
-            softness 15
           }
         }
       '';
