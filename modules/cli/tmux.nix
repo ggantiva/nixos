@@ -56,6 +56,9 @@
           set-window-option -g pane-base-index 1
           set-option -g renumber-windows on
 
+          # Pane Separators
+          set -g pane-border-lines simple
+
           # Vim-style copy/paste
           set-window-option -g mode-keys vi
           bind-key -T copy-mode-vi v send-keys -X begin-selection
@@ -89,7 +92,7 @@
     in
     {
       hj.files.".config/tmux/tmux.conf".text = ''
-        set-option -g status-style "fg=${clr.base05},bg=${clr.base01}"
+        set-option -g status-style "fg=${clr.base05},bg=default
 
         set -g message-style "fg=${clr.base0D},bg=${clr.base01},align=centre"
         set -g message-command-style "fg=${clr.base0D},bg=${clr.base01},align=centre" 
@@ -97,7 +100,8 @@
         set -g pane-border-style "fg=${clr.base01}"
         set -g pane-active-border-style "fg=${clr.base0B}"
 
-        set -g window-status-current-format "#[fg=${clr.base0B}] #I:#W*" 
+        set -g window-status-format " #I "
+        set -g window-status-current-format "#[fg=${clr.base0B}] #I " 
         set -g status-right "#[fg=${clr.base0A}][#S] "
       '';
     };
