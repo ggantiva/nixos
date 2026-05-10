@@ -21,7 +21,6 @@
 
         nvf
         git
-        zathura
 
       environment.systemPackages = with pkgs; [
         vesktop
@@ -52,6 +51,7 @@
 
         foot
         fuzzel
+        zathura
         mako
 
         fzf
