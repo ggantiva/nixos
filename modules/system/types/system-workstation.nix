@@ -25,7 +25,6 @@
         nvf
         git
         zoxide
-        fzf
         zathura
         btop
       ];
@@ -52,6 +51,7 @@
       system-base
 
       base16
+      fzf
     ];
   };
 }
