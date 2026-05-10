@@ -10,7 +10,6 @@
 
         ly
         niri
-        swaybg
         osd
         swaylock
         swayidle
@@ -50,6 +49,7 @@
         fuzzel
         zathura
         mako
+        swaybg
 
         fzf
         zoxide
