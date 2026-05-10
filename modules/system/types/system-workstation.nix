@@ -45,6 +45,7 @@
 
         base16
 
+        niri
         foot
         fuzzel
         zathura
