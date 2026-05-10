@@ -52,6 +52,7 @@
 
       base16
       fzf
+      zoxide
     ];
   };
 }
