@@ -11,7 +11,6 @@
         ly
         niri
         swaybg
-        foot
         fuzzel
         osd
         swaylock
@@ -41,6 +40,7 @@
           noto-fonts-cjk-serif
           noto-fonts-color-emoji
           unifont
+          nerd-fonts.agave
         ];
         enableDefaultPackages = true;
       };
@@ -54,5 +54,6 @@
       zoxide
     ];
   };
+        foot
         mako
 }
