@@ -19,7 +19,6 @@
         librewolf
 
         nvf
-        git
       ];
 
       fonts = {
@@ -54,6 +53,7 @@
         fzf
         zoxide
         btop
+        git
       ];
 
       home.packages = with pkgs; [
