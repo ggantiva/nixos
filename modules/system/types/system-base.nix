@@ -11,7 +11,6 @@
         locale
         impermanence
         sops
-        ssh
 
         tmux
         bash
@@ -65,7 +64,7 @@
       inherit (config.constants) user;
     in
     {
-      imports = with self.modules.generic; [ constants ];
+      imports = with self.modules.homeManager; [ ssh ] ++ (with self.modules.generic; [ constants ]);
 
       home = {
         homeDirectory = "/home/${user}";
