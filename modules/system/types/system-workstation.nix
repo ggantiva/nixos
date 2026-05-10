@@ -24,7 +24,6 @@
         git
         zoxide
         zathura
-        btop
       ];
 
       environment.systemPackages = with pkgs; [
@@ -56,4 +55,5 @@
   };
         foot
         mako
+        btop
 }
