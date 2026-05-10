@@ -1,31 +1,22 @@
-{ self, inputs, ... }:
 {
-  flake.modules.nixos.git = {
+  flake.modules.homeManager.git = {
     programs.git = {
       enable = true;
-      config = {
+      settings = {
         core = {
           compression = 9;
           preloadindex = true;
+        };
+
+        init = {
+          defaultBranch = "main";
         };
 
         user = {
           name = "Germán Gantiva";
           email = "pm@ggantiva.com";
         };
-
-        init.defaultBranch = "main";
       };
-    };
-
-    hj.files = {
-      ".ssh/config".text = ''
-        Host codeberg.org
-          HostName codeberg.org
-          user git
-          IdentityFile ~/.ssh/id_green
-          IdentityFile ~/.ssh/id_blue
-      '';
     };
   };
 }
