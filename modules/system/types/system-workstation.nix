@@ -13,7 +13,6 @@
         swaybg
         foot
         fuzzel
-        mako
         osd
         swaylock
         swayidle
@@ -55,4 +54,5 @@
       zoxide
     ];
   };
+        mako
 }
