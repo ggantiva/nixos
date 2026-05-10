@@ -1,6 +1,5 @@
-{ self, inputs, ... }:
 {
-  flake.modules.nixos.swaybg =
+  flake.modules.homeManager.swaybg =
     { pkgs, ... }:
     let
       wallpaper = pkgs.fetchurl {
@@ -10,11 +9,16 @@
     in
     {
       systemd.user.services.swaybg = {
-        description = "Wallpaper Service";
-        after = [ "niri.service" ];
-        wantedBy = [ "graphical-session.target" ];
+        Unit = {
+          Description = "Wallpaper service";
+          After = [ "niri-service" ];
+        };
 
-        serviceConfig = {
+        Install = {
+          WantedBy = [ "graphical-session.target" ];
+        };
+
+        Service = {
           ExecStart = "${pkgs.swaybg}/bin/swaybg -m fill -i '${wallpaper}'";
           Restart = "on-failure";
         };
