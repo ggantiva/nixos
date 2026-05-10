@@ -21,10 +21,6 @@
 
         nvf
         git
-
-      environment.systemPackages = with pkgs; [
-        vesktop
-        lazygit
       ];
 
       fonts = {
@@ -59,4 +55,9 @@
         btop
       ];
 
+      home.packages = with pkgs; [
+        vesktop
+        lazygit
+      ];
+    };
 }
