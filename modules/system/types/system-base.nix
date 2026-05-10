@@ -5,6 +5,7 @@
       with self.modules.nixos;
       [
         boot
+        home-manager
         hjem
         users
         locale
@@ -57,4 +58,18 @@
       extraOptions = "warn-dirty = false";
     };
   };
+
+  flake.modules.homeManager.system-base =
+    { config, ... }:
+    let
+      inherit (config.constants) user;
+    in
+    {
+      imports = with self.modules.generic; [ constants ];
+
+      home = {
+        homeDirectory = "/home/${user}";
+        stateVersion = "24.11";
+      };
+    };
 }

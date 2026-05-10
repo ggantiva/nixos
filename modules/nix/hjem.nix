@@ -20,6 +20,7 @@
         user = "${user}";
         clobberFiles = true;
         directory = "/home/${user}";
+        systemd.enable = false;
       };
     };
 }
