@@ -11,7 +11,6 @@
         ly
         niri
         swaybg
-        fuzzel
         osd
         swaylock
         swayidle
@@ -22,9 +21,7 @@
 
         nvf
         git
-        zoxide
         zathura
-      ];
 
       environment.systemPackages = with pkgs; [
         vesktop
@@ -44,16 +41,22 @@
         enableDefaultPackages = true;
       };
     };
-  flake.modules.homeManager.system-workstation = {
-    imports = with self.modules.homeManager; [
-      system-base
 
-      base16
-      fzf
-      zoxide
-    ];
-  };
+  flake.modules.homeManager.system-workstation =
+    { pkgs, ... }:
+    {
+      imports = with self.modules.homeManager; [
+        system-base
+
+        base16
+
         foot
+        fuzzel
         mako
+
+        fzf
+        zoxide
         btop
+      ];
+
 }
