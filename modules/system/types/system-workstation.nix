@@ -50,6 +50,8 @@
   flake.modules.homeManager.system-workstation = {
     imports = with self.modules.homeManager; [
       system-base
+
+      base16
     ];
   };
 }
