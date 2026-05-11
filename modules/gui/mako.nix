@@ -56,6 +56,14 @@
             history = 0;
           };
 
+          "app-name=lock" = {
+            layer = "overlay";
+            anchor = "center";
+            text-alignment = "center";
+            history = 0;
+            width = 200;
+          };
+
           "app-name=volume group-index=0" = {
             invisible = 0;
           };

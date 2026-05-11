@@ -38,7 +38,7 @@
         Service = {
           ExecStart = ''
             ${pkgs.swayidle}/bin/swayidle -w  \
-            timeout 290 '${pkgs.libnotify}/bin/notify-send "Locking in 10 seconds" -t 10000' \
+            timeout 290 '${pkgs.libnotify}/bin/notify-send -t 10000 -a lock "Locking in 10 seconds" ' \
             timeout 300 '${pkgs.swaylock}/bin/swaylock --daemonize' \
             timeout 600 '${pkgs.niri}/bin/niri msg action power-off-monitors' \
             timeout 1200 '${pkgs.systemd}/bin/systemctl suspend' \
