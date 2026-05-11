@@ -1,11 +1,13 @@
-{ self, inputs, ... }:
 {
-  flake.modules.nixos.tmux =
-    { pkgs, ... }:
+  flake.modules.homeManager.tmux =
+    { config, ... }:
+    let
+      clr = config.scheme.withHashtag;
+    in
     {
-      hj = {
-        packages = with pkgs; [ tmux ];
-        files.".config/tmux/tmux.conf".text = /* bash */ ''
+      programs.tmux = {
+        enable = true;
+        extraConfig = /* bash */ ''
           # Enable 256 color support
           set -g default-terminal "tmux-256color"
           set -ga terminal-overrides ",*:RGB"
@@ -81,28 +83,19 @@
           set -g status-right-length "100"
 
           set -g status-left ""
+          set-option -g status-style "fg=${clr.base05},bg=${clr.base01}"
+
+          set -g message-style "fg=${clr.base0D},bg=${clr.base01},align=centre"
+          set -g message-command-style "fg=${clr.base0D},bg=${clr.base01},align=centre" 
+
+          set -g pane-border-style "fg=${clr.base01}"
+          set -g pane-active-border-style "fg=${clr.base0B}"
+
+          set -g window-status-format " #I "
+          set -g window-status-current-format "#[fg=${clr.base0B}] #I " 
+          set -g status-right "#[fg=${clr.base0A}][#S] "
         '';
       };
     };
 
-  flake.modules.nixos.base16 =
-    { config, ... }:
-    let
-      clr = config.scheme.withHashtag;
-    in
-    {
-      hj.files.".config/tmux/tmux.conf".text = ''
-        set-option -g status-style "fg=${clr.base05},bg=default
-
-        set -g message-style "fg=${clr.base0D},bg=${clr.base01},align=centre"
-        set -g message-command-style "fg=${clr.base0D},bg=${clr.base01},align=centre" 
-
-        set -g pane-border-style "fg=${clr.base01}"
-        set -g pane-active-border-style "fg=${clr.base0B}"
-
-        set -g window-status-format " #I "
-        set -g window-status-current-format "#[fg=${clr.base0B}] #I " 
-        set -g status-right "#[fg=${clr.base0A}][#S] "
-      '';
-    };
 }
