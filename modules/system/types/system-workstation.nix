@@ -14,7 +14,6 @@
 
         base16
         gtk
-        librewolf
 
         nvf
       ];
@@ -48,6 +47,7 @@
         mako
         swaybg
         osd
+        librewolf
 
         fzf
         zoxide
