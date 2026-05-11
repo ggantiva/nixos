@@ -5,7 +5,6 @@
       clr = config.scheme.withHashtag;
     in
     {
-      programs.bash.enable = true;
       programs.fzf = {
         enable = true;
         colors = {

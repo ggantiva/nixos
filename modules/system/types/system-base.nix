@@ -11,7 +11,6 @@
         locale
         impermanence
         sops
-        bash
       ]
       ++ (with self.modules.generic; [
         constants
@@ -67,7 +66,7 @@
         [
           ssh
           tmux
-      imports = with self.modules.homeManager; [ ssh ] ++ (with self.modules.generic; [ constants ]);
+          bash
         ]
         ++ (with self.modules.generic; [ constants ]);
 
