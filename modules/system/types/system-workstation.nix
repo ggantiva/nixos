@@ -13,7 +13,6 @@
         swaylock
 
         base16
-        gtk
 
         nvf
       ];
@@ -48,6 +47,7 @@
         swaybg
         osd
         librewolf
+        gtk
 
         fzf
         zoxide
