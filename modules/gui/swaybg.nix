@@ -1,26 +1,25 @@
 {
   flake.modules.homeManager.swaybg =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     let
-      wallpaper = pkgs.fetchurl {
-        url = "https://w.wallhaven.cc/full/vg/wallhaven-vgyjo3.jpg";
-        hash = "sha256-Xc4OeYUZRWGy79sc5yDXJgPhC669zK6iwGKQ395Y+uM=";
-      };
+      inherit (config.constants) wallpaper;
     in
     {
-      systemd.user.services.swaybg = {
-        Unit = {
-          Description = "Wallpaper service";
-          After = [ "niri-service" ];
-        };
+      config = {
+        systemd.user.services.swaybg = {
+          Unit = {
+            Description = "Wallpaper service";
+            After = [ "niri-service" ];
+          };
 
-        Install = {
-          WantedBy = [ "graphical-session.target" ];
-        };
+          Install = {
+            WantedBy = [ "graphical-session.target" ];
+          };
 
-        Service = {
-          ExecStart = "${pkgs.swaybg}/bin/swaybg -m fill -i '${wallpaper}'";
-          Restart = "on-failure";
+          Service = {
+            ExecStart = "${pkgs.swaybg}/bin/swaybg -m fill -i '${wallpaper}'";
+            Restart = "on-failure";
+          };
         };
       };
     };
