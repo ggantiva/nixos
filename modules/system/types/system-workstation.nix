@@ -8,11 +8,11 @@
         pipewire
         yubikey
 
+        swaylock
         ly
         niri
         osd
         swaylock
-        swayidle
 
         base16
         gtk
