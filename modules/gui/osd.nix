@@ -1,9 +1,8 @@
-{ self, inputs, ... }:
 {
-  flake.modules.nixos.osd =
+  flake.modules.homeManager.osd =
     { pkgs, ... }:
     {
-      environment.systemPackages = [
+      home.packages = [
         (pkgs.writeShellApplication {
           name = "clock";
           runtimeInputs = with pkgs; [ libnotify ];

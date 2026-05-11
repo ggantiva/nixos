@@ -8,10 +8,8 @@
         pipewire
         yubikey
 
-        swaylock
         ly
         niri
-        osd
         swaylock
 
         base16
@@ -49,6 +47,7 @@
         zathura
         mako
         swaybg
+        osd
 
         fzf
         zoxide
