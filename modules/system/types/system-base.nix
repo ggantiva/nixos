@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ self, ... }:
 {
   flake.modules.nixos.system-base = {
     imports =
@@ -11,8 +11,6 @@
         locale
         impermanence
         sops
-
-        tmux
         bash
       ]
       ++ (with self.modules.generic; [
@@ -64,7 +62,14 @@
       inherit (config.constants) user;
     in
     {
+      imports =
+        with self.modules.homeManager;
+        [
+          ssh
+          tmux
       imports = with self.modules.homeManager; [ ssh ] ++ (with self.modules.generic; [ constants ]);
+        ]
+        ++ (with self.modules.generic; [ constants ]);
 
       home = {
         homeDirectory = "/home/${user}";
