@@ -39,17 +39,19 @@ in
         owner = "${user}";
       };
     };
-
-    hj.files = {
-      ".ssh/id_blue.pub".source = ./id_blue.pub;
-      ".ssh/id_green.pub".source = ./id_green.pub;
-    };
   };
 
   flake.modules.homeManager.${user} = {
     imports = with self.modules.homeManager; [
       system-workstation
     ];
-    home.username = "${user}";
+
+    home = {
+      username = "${user}";
+      file = {
+        ".ssh/id_blue.pub".source = ./id_blue.pub;
+        ".ssh/id_green.pub".source = ./id_green.pub;
+      };
+    };
   };
 }
