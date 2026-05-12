@@ -6,7 +6,6 @@
       [
         boot
         home-manager
-        hjem
         users
         locale
         impermanence
