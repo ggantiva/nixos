@@ -1,4 +1,3 @@
-{ self, inputs, ... }:
 {
   flake.modules.nixos.boot = {
     boot = {
@@ -13,6 +12,7 @@
           # Disable limit of nixos generations
           configurationLimit = null;
           memtest86.enable = true;
+          consoleMode = "max";
         };
       };
     };
