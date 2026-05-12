@@ -8,7 +8,8 @@
         pipewire
         yubikey
 
-        ly
+        plymouth
+        greetd
         niri
         swaylock
 
