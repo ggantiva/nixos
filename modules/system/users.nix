@@ -43,7 +43,7 @@ in
 
   flake.modules.homeManager.${user} = {
     imports = with self.modules.homeManager; [
-      system-workstation
+      system-base
     ];
 
     home = {
