@@ -64,7 +64,6 @@
         with self.modules.homeManager;
         [
           ssh
-          tmux
           bash
         ]
         ++ (with self.modules.generic; [ constants ]);
