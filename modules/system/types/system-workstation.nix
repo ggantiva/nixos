@@ -51,6 +51,7 @@
         gtk
 
         fzf
+        tmux
         zoxide
         btop
         git
