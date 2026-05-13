@@ -21,11 +21,11 @@
           PROMPT_DIRTRIM=2
 
           if [ -n "$SSH_CLIENT" ]; then
-            PS1='\[\e[91m\][\u@\h] \[\e[0m\]\[\e[95m\]\w\[\e[0m\] \[\e[96m\]$(__git_ps1 "(%s) ")\[\e[0m\]\n '
+            PS1='\[\e[91m\][\u@\h] \[\e[0m\]\[\e[95m\]\w\[\e[0m\] $(__git_ps1 "(%s) ")\n '
           elif [ "$EUID" -eq 0 ]; then
-            PS1='\[\e[91m\]\u: \[\e[0m\]\[\e[95m\]\w\[\e[0m\] \[\e[96m\]$(__git_ps1 "(%s) ")\[\e[0m\]\n '
+            PS1='\[\e[91m\]\u: \[\e[0m\]\[\e[95m\]\w\[\e[0m\] $(__git_ps1 "(%s) ")\n '
           else
-            PS1='\[\e[95m\]\w\[\e[0m\] \[\e[96m\]$(__git_ps1 "(%s) ")\[\e[0m\]\n '
+            PS1='\[\e[95m\]\w\[\e[0m\] $(__git_ps1 "(%s) ")\n '
           fi
 
           # Add colors to man pages
