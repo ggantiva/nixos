@@ -21,8 +21,8 @@
           };
 
           colors-dark = {
+            alpha = 0.9;
             blur = "yes";
-            alpha = "0.7";
             background = "${clr.base00}";
             foreground = "${clr.base05}";
 
