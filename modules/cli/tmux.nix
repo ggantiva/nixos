@@ -22,8 +22,8 @@
 
           # Set prefix
           unbind C-b
-          set -g prefix C-j
-          bind-key C-j send-prefix
+          set -g prefix C-Space
+          bind-key C-Space send-prefix
 
           # Vim-style pane navigation
           bind -n M-h select-pane -L
@@ -76,24 +76,20 @@
           bind-key g display-popup -d "#{pane_current_path}" -w 80% -h 80% -E lazygit
 
           # Status bar settings
-          set -g status on
-          set-option -g status-justify "left"
           set-option -g status-position "top"
-          set -g status-left-length "100"
-          set -g status-right-length "100"
 
           set -g status-left ""
-          set-option -g status-style "fg=${clr.base05},bg=${clr.base01}"
+          set -g status-right " [#S] "
 
-          set -g message-style "fg=${clr.base0D},bg=${clr.base01},align=centre"
-          set -g message-command-style "fg=${clr.base0D},bg=${clr.base01},align=centre" 
+          set -g status-style "fg=${clr.base05},bg=${clr.base01}"
+          set -g status-right-style "fg=${clr.base0A}"
 
           set -g pane-border-style "fg=${clr.base01}"
-          set -g pane-active-border-style "fg=${clr.base0B}"
+          set -g pane-active-border-style "fg=${clr.base0A}"
 
-          set -g window-status-format " #I "
-          set -g window-status-current-format "#[fg=${clr.base0B}] #I " 
-          set -g status-right "#[fg=${clr.base0A}][#S] "
+          set -g window-status-format " #W "
+          set -g window-status-current-format " #W " 
+          set -g window-status-current-style "fg=${clr.base01},bg=${clr.base0A}"
         '';
       };
     };
