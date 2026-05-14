@@ -22,8 +22,8 @@
 
           # Set prefix
           unbind C-b
-          set -g prefix C-Space
-          bind-key C-Space send-prefix
+          set -g prefix C-j
+          bind-key C-j send-prefix
 
           # Vim-style pane navigation
           bind -n M-h select-pane -L
