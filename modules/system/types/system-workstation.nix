@@ -41,7 +41,7 @@
         base16
 
         niri
-        foot
+        kitty
         fuzzel
         zathura
         mako
@@ -51,13 +51,13 @@
         gtk
 
         fzf
-        tmux
         zoxide
         btop
         git
       ];
 
       home.packages = with pkgs; [
+        wl-clipboard
         wiremix
         vesktop
         lazygit
