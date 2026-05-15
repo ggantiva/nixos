@@ -18,11 +18,20 @@
       positive = clr.base0B;
       negative = clr.base08;
 
-      inherit (config.constants) wallpaper;
-      background = pkgs.runCommand "background.png" {
-        buildInputs = [ pkgs.imagemagick ];
-        # Blur the image and darken it
-      } ''magick "${wallpaper}" -scale 10% -blur 0x2.5 -resize 1000% -level 0%,100%,0.8 $out'';
+      lockscreen = pkgs.writeShellApplication {
+        name = "lockscreen";
+        runtimeInputs = with pkgs; [
+          grim
+          imagemagick
+          swaylock
+        ];
+        text = ''
+          IMAGE="/tmp/swaylock-bg.png"
+          grim "$IMAGE"
+          magick "$IMAGE" -scale 10% -blur 0x2.5 -resize 1000% -level 0%,100%,0.8 "$IMAGE"
+          swaylock --daemonize -i "$IMAGE"
+        '';
+      };
     in
     {
       systemd.user.services.swayidle = {
@@ -39,10 +48,10 @@
           ExecStart = ''
             ${pkgs.swayidle}/bin/swayidle -w  \
             timeout 290 '${pkgs.libnotify}/bin/notify-send -t 10000 -a lock "Locking in 10 seconds" ' \
-            timeout 300 '${pkgs.swaylock}/bin/swaylock --daemonize' \
+            timeout 300 '${lockscreen}/bin/lockscreen' \
             timeout 600 '${pkgs.niri}/bin/niri msg action power-off-monitors' \
             timeout 1200 '${pkgs.systemd}/bin/systemctl suspend' \
-            before-sleep '${pkgs.swaylock}/bin/swaylock --daemonize' \
+            before-sleep '${lockscreen}/bin/lockscreen' \
             after-resume '${pkgs.niri}/bin/niri msg action power-on-monitors'
           '';
           Restart = "on-failure";
@@ -52,7 +61,6 @@
       programs.swaylock = {
         enable = true;
         settings = {
-          image = "${background}";
           color = outside;
           inside-color = inside;
           inside-clear-color = inside;
