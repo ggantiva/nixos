@@ -50,6 +50,7 @@
         librewolf
         gtk
 
+        yazi
         fzf
         zoxide
         btop
