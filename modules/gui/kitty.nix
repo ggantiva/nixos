@@ -23,60 +23,47 @@
         };
 
         keybindings = {
-          ### Tab control ###
-          "kitty_mod+t" = "new_tab";
-          "kitty_mod+q" = "close_tab";
-
+          ### Windows ###
           # Movement
-          "kitty_mod+y" = "goto_tab 1";
-          "kitty_mod+u" = "goto_tab 2";
-          "kitty_mod+i" = "goto_tab 3";
-          "kitty_mod+o" = "goto_tab 4";
-          "kitty_mod+p" = "goto_tab 5";
-
-          ### Window control ###
-          "kitty_mod+w" = "close_window";
-          "kitty_mod+v" = "launch --location=vsplit --cwd=current";
-          "kitty_mod+s" = "launch --location=hsplit --cwd=current";
-
-          # Movement
-          "kitty_mod+ctrl+h" = "move_window left";
-          "kitty_mod+ctrl+j" = "move_window down";
-          "kitty_mod+ctrl+k" = "move_window up ";
-          "kitty_mod+ctrl+l" = "move_window right";
-
-          "kitty_mod+h" = "neighboring_window left";
-          "kitty_mod+j" = "neighboring_window down";
-          "kitty_mod+k" = "neighboring_window up";
-          "kitty_mod+l" = "neighboring_window right";
+          "alt+h" = "neighboring_window left";
+          "alt+j" = "neighboring_window down";
+          "alt+k" = "neighboring_window up";
+          "alt+l" = "neighboring_window right";
 
           # Zoom in
-          "kitty_mod+z" = "toggle_layout stack";
+          "alt+z" = "toggle_layout stack";
 
-          # Resize
-          "kitty_mod+r" = "start_resizing_window";
-
-          ### Clipboard ###
-          "ctrl+shift+c" = "copy_to_clipboard";
-          "ctrl+shift+v" = "paste_from_clipboard";
+          ### Tabs ###
+          "alt+y" = "goto_tab 1";
+          "alt+u" = "goto_tab 2";
+          "alt+i" = "goto_tab 3";
+          "alt+o" = "goto_tab 4";
+          "alt+p" = "goto_tab 5";
         };
 
         settings = {
           # Shortcuts
-          clear_all_shortcuts = "yes";
-          kitty_mod = "alt";
+          kitty_mod = "ctrl+shift";
 
-          # Layouts
-          enabled_layouts = "splits,stack";
+          # Layout
+          enabled_layouts = "tall,stack";
+
+          window_resize_step_cells = 5;
+          window_resize_step_lines = 5;
 
           # Tabs
-          tab_title_template = "{' #' if layout_name == 'stack' else '  '}{fmt.fg.red}{bell_symbol}{fmt.fg.tab}{title}  ";
+          tab_bar_edge = "top";
+          tab_bar_align = "center";
+          tab_bar_style = "fade";
+          tab_fade = " 1";
 
-          scrollback_pager = "nvim --noplugin --cmd 'set eventignore=FileType' +'nnoremap q ZQ' +'vnoremap y \"+y<cmd>q!<cr>' +'call nvim_open_term(0, {})' +'set nomodified nolist clipboard+=unnamedplus' +'$' -";
+          tab_title_template = "{'#' if layout_name == 'stack' else ''}{index}";
 
-          ### Theme ###
-          disable_ligatures = "always";
+          # Pager
+          scrollback_pager = "${pkgs.neovim}/bin/nvim --cmd 'set eventignore=FileType' +'hi Normal guibg=NONE ctermbg=NONE' +'nnoremap q ZQ' +'vnoremap y \"+y<cmd>q!<cr>' +'call nvim_open_term(0, {})' +'set nomodified laststatus=0 nolist clipboard+=unnamedplus' +'$' -";
+
           # blur
+          disable_ligatures = "always";
           background_opacity = 0.9;
           background_blur = 1;
 
@@ -90,8 +77,8 @@
           cursor_text_color = "${clr.base00}";
           active_border_color = "${clr.base03}";
           inactive_border_color = "${clr.base01}";
-          active_tab_background = "${clr.base00}";
-          active_tab_foreground = "${clr.base05}";
+          active_tab_background = "${clr.base08}";
+          active_tab_foreground = "${clr.base01}";
           inactive_tab_background = "${clr.base01}";
           inactive_tab_foreground = "${clr.base04}";
           tab_bar_background = "${clr.base01}";
