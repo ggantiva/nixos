@@ -19,8 +19,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nvf = {
-      url = "github:notashelf/nvf";
+    nvim-custom = {
+      url = "git+https://codeberg.org/ggantiva/nvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
