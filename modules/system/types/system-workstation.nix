@@ -1,4 +1,4 @@
-{ self, ... }:
+{ self, inputs, ... }:
 {
   flake.modules.nixos.system-workstation =
     { pkgs, ... }:
@@ -14,8 +14,6 @@
         swaylock
 
         base16
-
-        nvf
       ];
 
       fonts = {
@@ -57,11 +55,14 @@
         git
       ];
 
-      home.packages = with pkgs; [
-        wl-clipboard
-        wiremix
-        vesktop
-        lazygit
-      ];
+      home.packages =
+        with pkgs;
+        [
+          wl-clipboard
+          wiremix
+          vesktop
+          lazygit
+        ]
+        ++ [ inputs.nvim-custom.packages.${pkgs.stdenv.hostPlatform.system}.default ];
     };
 }
