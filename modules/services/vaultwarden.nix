@@ -1,4 +1,3 @@
-{ self, inputs, ... }:
 {
   flake.modules.nixos.vaultwarden = {
     services.vaultwarden = {
@@ -23,6 +22,6 @@
       }
     '';
 
-    custom.impermanence.root.directories = [ "/var/lib/vaultwarden" ];
+    custom.impermanence.root.directories = ["/var/lib/vaultwarden"];
   };
 }

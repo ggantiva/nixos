@@ -1,8 +1,6 @@
-{ self, ... }:
-{
+{self, ...}: {
   flake.modules.nixos.system-base = {
-    imports =
-      with self.modules.nixos;
+    imports = with self.modules.nixos;
       [
         boot
         home-manager
@@ -54,23 +52,19 @@
     };
   };
 
-  flake.modules.homeManager.system-base =
-    { config, ... }:
-    let
-      inherit (config.constants) user;
-    in
-    {
-      imports =
-        with self.modules.homeManager;
-        [
-          ssh
-          bash
-        ]
-        ++ (with self.modules.generic; [ constants ]);
+  flake.modules.homeManager.system-base = {config, ...}: let
+    inherit (config.constants) user;
+  in {
+    imports = with self.modules.homeManager;
+      [
+        ssh
+        bash
+      ]
+      ++ (with self.modules.generic; [constants]);
 
-      home = {
-        homeDirectory = "/home/${user}";
-        stateVersion = "24.11";
-      };
+    home = {
+      homeDirectory = "/home/${user}";
+      stateVersion = "24.11";
     };
+  };
 }
