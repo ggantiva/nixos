@@ -30,6 +30,27 @@ output "HDMI-A-1" {
   variable-refresh-rate on-demand=true
 }
 
+// Named workspaces
+workspace "terminal" {
+  open-on-output "HDMI-A-1";
+}
+
+workspace "browser" {
+  open-on-output "HDMI-A-1";
+}
+
+workspace "chat" {
+  open-on-output "HDMI-A-1";
+}
+
+workspace "four" {
+  open-on-output "HDMI-A-1";
+}
+
+workspace "five" {
+  open-on-output "HDMI-A-1";
+}
+
 // Settings that influence how windows are positioned and sized.
 // https://niri-wm.github.io/niri/Configuration:-Layout
 layout {
@@ -179,16 +200,16 @@ binds {
     //
     // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
     // will all refer to the 3rd workspace.
-    Mod+Y { focus-workspace 1; }
-    Mod+U { focus-workspace 2; }
-    Mod+I { focus-workspace 3; }
-    Mod+O { focus-workspace 4; }
-    Mod+P { focus-workspace 5; }
-    Mod+Shift+Y { move-column-to-workspace 1; }
-    Mod+Shift+U { move-column-to-workspace 2; }
-    Mod+Shift+I { move-column-to-workspace 3; }
-    Mod+Shift+O { move-column-to-workspace 4; }
-    Mod+Shift+P { move-column-to-workspace 5; }
+    Mod+Y { focus-workspace "terminal"; }
+    Mod+U { focus-workspace "browser"; }
+    Mod+I { focus-workspace "chat"; }
+    Mod+O { focus-workspace "four"; }
+    Mod+P { focus-workspace "five"; }
+    Mod+Shift+Y { move-column-to-workspace "terminal"; }
+    Mod+Shift+U { move-column-to-workspace "browser"; }
+    Mod+Shift+I { move-column-to-workspace "chat"; }
+    Mod+Shift+O { move-column-to-workspace "four"; }
+    Mod+Shift+P { move-column-to-workspace "five"; }
 
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
