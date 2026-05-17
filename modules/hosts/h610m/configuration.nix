@@ -1,5 +1,4 @@
-{ self, ... }:
-{
+{self, ...}: {
   flake.modules.nixos.h610m = {
     imports = with self.modules.nixos; [
       # System type

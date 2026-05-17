@@ -1,4 +1,3 @@
-{ self, inputs, ... }:
 {
   flake.modules.nixos.locale = {
     time.timeZone = "America/Bogota";

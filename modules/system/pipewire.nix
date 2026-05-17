@@ -1,4 +1,3 @@
-{ self, inputs, ... }:
 {
   flake.modules.nixos.pipewire = {
     security.rtkit.enable = true;
