@@ -1,68 +1,59 @@
-{ self, inputs, ... }:
-{
-  flake.modules.nixos.system-workstation =
-    { pkgs, ... }:
-    {
-      imports = with self.modules.nixos; [
-        system-base
-        pipewire
-        yubikey
+{self, ...}: {
+  flake.modules.nixos.system-workstation = {pkgs, ...}: {
+    imports = with self.modules.nixos; [
+      system-base
+      pipewire
+      yubikey
 
-        plymouth
-        greetd
-        niri
-        swaylock
+      plymouth
+      greetd
+      niri
+      swaylock
+    ];
 
-        base16
+    fonts = {
+      packages = with pkgs; [
+        liberation_ttf
+        noto-fonts
+        noto-fonts-cjk-sans
+        noto-fonts-cjk-serif
+        noto-fonts-color-emoji
+        unifont
+        nerd-fonts.agave
       ];
-
-      fonts = {
-        packages = with pkgs; [
-          liberation_ttf
-          noto-fonts
-          noto-fonts-cjk-sans
-          noto-fonts-cjk-serif
-          noto-fonts-color-emoji
-          unifont
-          nerd-fonts.agave
-        ];
-        enableDefaultPackages = true;
-      };
+      enableDefaultPackages = true;
     };
+  };
 
-  flake.modules.homeManager.system-workstation =
-    { pkgs, ... }:
-    {
-      imports = with self.modules.homeManager; [
-        system-base
+  flake.modules.homeManager.system-workstation = {pkgs, ...}: {
+    imports = with self.modules.homeManager; [
+      system-base
 
-        base16
+      base16
 
-        niri
-        kitty
-        fuzzel
-        zathura
-        mako
-        swaybg
-        osd
-        librewolf
-        gtk
+      niri
+      kitty
+      fuzzel
+      zathura
+      mako
+      swaybg
+      osd
+      librewolf
+      gtk
 
-        yazi
-        fzf
-        zoxide
-        btop
-        git
-      ];
+      yazi
+      fzf
+      zoxide
+      btop
+      git
+      nvim
+    ];
 
-      home.packages =
-        with pkgs;
-        [
-          wl-clipboard
-          wiremix
-          vesktop
-          lazygit
-        ]
-        ++ [ inputs.nvim-custom.packages.${pkgs.stdenv.hostPlatform.system}.default ];
-    };
+    home.packages = with pkgs; [
+      wl-clipboard
+      wiremix
+      vesktop
+      lazygit
+    ];
+  };
 }
