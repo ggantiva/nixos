@@ -5,7 +5,6 @@
       pipewire
       yubikey
 
-      plymouth
       greetd
       niri
       swaylock
