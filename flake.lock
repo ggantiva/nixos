@@ -347,11 +347,11 @@
         "nvf": "nvf"
       },
       "locked": {
-        "lastModified": 1779071824,
-        "narHash": "sha256-wSXApKkkP4DLha9Fer1DNqnjWLkrSVPntVFfDHMDpc8=",
+        "lastModified": 1779232838,
+        "narHash": "sha256-GVdhHMNM7wBaTg9Yylcball/dSYfuKtWGVj6JZWW2/k=",
         "ref": "refs/heads/main",
-        "rev": "21e451347d331c1161229934acfc2140fbfeff32",
-        "revCount": 19,
+        "rev": "d579963eb90a2e342dd4141d38f5be3e0612c09a",
+        "revCount": 20,
         "type": "git",
         "url": "https://codeberg.org/ggantiva/nvim"
       },
