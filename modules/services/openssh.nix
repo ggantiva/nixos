@@ -4,7 +4,7 @@
       enable = true;
       generateHostKeys = true;
       startWhenNeeded = true;
-      ports = [2428];
+      ports = [ 2428 ];
       openFirewall = true;
       settings = {
         PermitRootLogin = "no";

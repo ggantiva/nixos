@@ -1,7 +1,8 @@
-{inputs, ...}: {
-  imports = [inputs.flake-parts.flakeModules.modules];
+{ inputs, ... }:
+{
+  imports = [ inputs.flake-parts.flakeModules.modules ];
 
   config = {
-    systems = ["x86_64-linux"];
+    systems = [ "x86_64-linux" ];
   };
 }

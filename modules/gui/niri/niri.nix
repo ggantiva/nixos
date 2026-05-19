@@ -1,48 +1,53 @@
 {
-  flake.modules.nixos.niri = {pkgs, ...}: {
-    programs.niri = {
-      enable = true;
-      useNautilus = false;
+  flake.modules.nixos.niri =
+    { pkgs, ... }:
+    {
+      programs.niri = {
+        enable = true;
+        useNautilus = false;
+      };
+
+      environment = {
+        sessionVariables.NIXOS_OZONE_WL = "1";
+        systemPackages = with pkgs; [
+          simp1e-cursors
+          xwayland-satellite
+        ];
+      };
+
+      security.polkit.enable = true;
+      services.gnome.gnome-keyring.enable = true;
+
+      xdg.portal.config.niri."org.freedesktop.imp.portal.FileChooser" = [ "gtk" ];
     };
 
-    environment = {
-      sessionVariables.NIXOS_OZONE_WL = "1";
-      systemPackages = with pkgs; [
-        simp1e-cursors
-        xwayland-satellite
-      ];
-    };
+  flake.modules.homeManager.niri =
+    { config, ... }:
+    let
+      clr = config.scheme.withHashtag;
+    in
+    {
+      home = {
+        file = {
+          ".config/niri/config.kdl".source = ./niri.kdl;
+          ".config/niri/theme.kdl".text = ''
+            layout {
+              background-color "${clr.base00}"
 
-    security.polkit.enable = true;
-    services.gnome.gnome-keyring.enable = true;
+              shadow {
+                color "${clr.base00}"
+              }
 
-    xdg.portal.config.niri."org.freedesktop.imp.portal.FileChooser" = ["gtk"];
-  };
+              focus-ring {
+                active-color "${clr.base08}"
+              }
 
-  flake.modules.homeManager.niri = {config, ...}: let
-    clr = config.scheme.withHashtag;
-  in {
-    home = {
-      file = {
-        ".config/niri/config.kdl".source = ./niri.kdl;
-        ".config/niri/theme.kdl".text = ''
-          layout {
-            background-color "${clr.base00}"
-
-            shadow {
-              color "${clr.base00}"
+              insert-hint {
+                color "${clr.base08}"
+              }
             }
-
-            focus-ring {
-              active-color "${clr.base08}"
-            }
-
-            insert-hint {
-              color "${clr.base08}"
-            }
-          }
-        '';
+          '';
+        };
       };
     };
-  };
 }

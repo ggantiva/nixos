@@ -1,6 +1,8 @@
-{self, ...}: let
+{ self, ... }:
+let
   user = "ggantiva";
-in {
+in
+{
   flake.modules.nixos.users = {
     users = {
       mutableUsers = false;
@@ -13,7 +15,7 @@ in {
         ${user} = {
           isNormalUser = true;
           initialHashedPassword = "$y$j9T$Azdmw8tO4lu5Ed9costZm1$KrD8XDq/Ht9417VaDuswaxbH9ctpZzIsobfeQMhHNY9";
-          extraGroups = ["wheel"];
+          extraGroups = [ "wheel" ];
           openssh.authorizedKeys.keyFiles = [
             ./id_blue.pub
             ./id_green.pub
@@ -23,7 +25,7 @@ in {
     };
 
     home-manager.users."${user}" = {
-      imports = [self.modules.homeManager.${user}];
+      imports = [ self.modules.homeManager.${user} ];
     };
 
     sops.secrets = {

@@ -1,17 +1,15 @@
 {
   # programs.git.prompt.enable = true;
-  flake.modules.homeManager.bash = {pkgs, ...}: {
-    programs.bash = {
-      enable = true;
-      shellAliases = {
-        c = "clear";
-        nrs = "sudo nixos-rebuild switch --flake ~/.config/nixos-config";
-      };
-      initExtra =
-        /*
-        bash
-        */
-        ''
+  flake.modules.homeManager.bash =
+    { pkgs, ... }:
+    {
+      programs.bash = {
+        enable = true;
+        shellAliases = {
+          c = "clear";
+          nrs = "sudo nixos-rebuild switch --flake ~/.config/nixos-config";
+        };
+        initExtra = /* bash */ ''
           # Prompt
           source ${pkgs.git}/share/git/contrib/completion/git-prompt.sh
           GIT_PS1_SHOWDIRTYSTATE=1
@@ -43,26 +41,26 @@
           export HISTFILESIZE=20000
           export HISTCONTROL=ignoredups:eradeups:ignorespace
         '';
+      };
+
+      # Prompt
+      programs.readline = {
+        enable = true;
+        extraConfig = ''
+          set bell-style none
+
+          set meta-flag on
+          set input-meta on
+          set convert-meta off
+          set output-meta on
+          set colored-stats on
+
+          set show-mode-in-prompt on
+          set vi-cmd-mode-string "\1\e[33m\2v\1\e[0m\2"
+          set vi-ins-mode-string "\1\e[32m\2>\1\e[0m\2"
+
+          set show-all-if-unmodified on
+        '';
+      };
     };
-
-    # Prompt
-    programs.readline = {
-      enable = true;
-      extraConfig = ''
-        set bell-style none
-
-        set meta-flag on
-        set input-meta on
-        set convert-meta off
-        set output-meta on
-        set colored-stats on
-
-        set show-mode-in-prompt on
-        set vi-cmd-mode-string "\1\e[33m\2v\1\e[0m\2"
-        set vi-ins-mode-string "\1\e[32m\2>\1\e[0m\2"
-
-        set show-all-if-unmodified on
-      '';
-    };
-  };
 }
