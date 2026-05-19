@@ -78,8 +78,6 @@ hotkey-overlay {
   skip-at-startup
 }
 
-prefer-no-csd
-
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 // Animation settings.
@@ -122,8 +120,16 @@ cursor {
   xcursor-size 24
 }
 
+// Disable client side decorations
+prefer-no-csd
 // Window rules let you adjust behavior for individual windows.
 // https://niri-wm.github.io/niri/Configuration:-Window-Rules
+// Disable client side window shadows
+window-rule {
+    clip-to-geometry true
+}
+
+// Shadows and blur for floating windows
 window-rule {
   match is-floating=true
   background-effect {
