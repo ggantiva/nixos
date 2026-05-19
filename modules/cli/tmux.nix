@@ -1,14 +1,13 @@
 {
-  flake.modules.homeManager.tmux = {config, ...}: let
-    clr = config.scheme.withHashtag;
-  in {
-    programs.tmux = {
-      enable = true;
-      extraConfig =
-        /*
-        bash
-        */
-        ''
+  flake.modules.homeManager.tmux =
+    { config, ... }:
+    let
+      clr = config.scheme.withHashtag;
+    in
+    {
+      programs.tmux = {
+        enable = true;
+        extraConfig = /* bash */ ''
           # Enable 256 color support
           set -g default-terminal "tmux-256color"
           set -ga terminal-overrides ",*:RGB"
@@ -92,6 +91,6 @@
           set -g window-status-current-format " #W "
           set -g window-status-current-style "fg=${clr.base01},bg=${clr.base0A}"
         '';
+      };
     };
-  };
 }
