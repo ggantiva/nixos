@@ -61,8 +61,6 @@
 
         # blur
         disable_ligatures = "always";
-        background_opacity = 0.9;
-        background_blur = 1;
 
         # colors
         background = "${clr.base00}";
