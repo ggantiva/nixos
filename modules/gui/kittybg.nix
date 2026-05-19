@@ -9,9 +9,13 @@
     systemd.user.services.kittybg = {
       Unit = {
         Description = "Wallpaper service";
-        Requisite = "graphical-session.target";
-        PartOf = "graphical-session.target";
-        After = "graphical-session.target";
+        Requisite = ["graphical-session.target"];
+        PartOf = ["graphical-session.target"];
+        After = ["graphical-session.target"];
+      };
+
+      Install = {
+        WantedBy = ["graphical-session.target"];
       };
 
       Service = {
