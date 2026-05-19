@@ -27,15 +27,14 @@
   flake.modules.homeManager.system-workstation = {pkgs, ...}: {
     imports = with self.modules.homeManager; [
       system-base
-
       base16
 
+      kittybg
       niri
       kitty
       fuzzel
       zathura
       mako
-      swaybg
       osd
       librewolf
       gtk
