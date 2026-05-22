@@ -175,7 +175,7 @@ window-rule {
 
 binds {
     // Launch apps
-    Mod+Space { spawn "kitty" "--single-instance"; }
+    Mod+Space { spawn "kitty"; }
     Mod+D { spawn "fuzzel"; }
     Mod+M { spawn "powermenu"; } 
     Mod+T { spawn "clock"; }
