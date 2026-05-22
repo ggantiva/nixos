@@ -36,23 +36,23 @@
         "alt+l" = "neighboring_window right";
 
         # Movement
-        "alt+ctrl+h" = "move_window left";
-        "alt+ctrl+j" = "move_window down";
-        "alt+ctrl+k" = "move_window up";
-        "alt+ctrl+l" = "move_window right";
+        "ctrl+alt+h" = "move_window left";
+        "ctrl+alt+j" = "move_window down";
+        "ctrl+alt+k" = "move_window up";
+        "ctrl+alt+l" = "move_window right";
 
         # Split/Open
         "alt+v" = "launch --location=vsplit --cwd=current";
         "alt+s" = "launch --location=hsplit --cwd=current";
 
         # Close
-        "alt+w" = "close_window";
+        "ctrl+shift+w" = "close_window";
 
         # Resize
-        "alt+r" = "start_resizing_window";
+        "ctrl+shift+r" = "start_resizing_window";
 
         # Zoom in
-        "alt+z" = "toggle_layout stack";
+        "ctrl+shift+z" = "toggle_layout stack";
 
         ### Tabs ###
         "ctrl+shift+t" = "new_tab";
