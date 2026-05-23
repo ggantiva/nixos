@@ -44,6 +44,7 @@
         librewolf
         gtk
 
+        wl-clipboard
         yazi
         fzf
         zoxide
@@ -53,7 +54,6 @@
       ];
 
       home.packages = with pkgs; [
-        wl-clipboard
         wiremix
         vesktop
         lazygit
