@@ -42,8 +42,8 @@
         "ctrl+alt+l" = "move_window right";
 
         # Split/Open
-        "alt+v" = "launch --location=vsplit --cwd=current";
-        "alt+s" = "launch --location=hsplit --cwd=current";
+        "ctrl+/" = "launch --location=vsplit --cwd=current";
+        "ctrl+minus" = "launch --location=hsplit --cwd=current";
 
         # Close
         "ctrl+shift+w" = "close_window";
