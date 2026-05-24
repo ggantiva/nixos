@@ -22,7 +22,7 @@
         };
 
         Service = {
-          ExecStart = "${pkgs.kitty}/bin/kitten panel --edge=background --single-instance ${pkgs.lavat}/bin/lavat -g -s 1 -r 3 -c ${clr.base08} -k ${clr.base09}";
+          ExecStart = "${pkgs.kitty}/bin/kitten panel --edge=background --single-instance ${pkgs.lavat}/bin/lavat -g -s 2 -b 8 -r 3 -c ${clr.base08} -k ${clr.base09}";
           Restart = "on-failure";
         };
       };
