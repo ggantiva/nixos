@@ -5,6 +5,7 @@
       system-base
       openssh
 
+      mediaServer
       admin
       caddy
       vaultwarden
