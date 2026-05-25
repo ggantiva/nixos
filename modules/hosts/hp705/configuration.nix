@@ -5,6 +5,7 @@
       system-base
       openssh
 
+      admin
       caddy
       vaultwarden
       searx
