@@ -1,6 +1,6 @@
 {
   flake.modules.nixos.qbittorrent =
-    { lib, pkgs, ... }:
+    { lib, ... }:
     let
       webuiPort = 9091;
       url = "torrent";
@@ -35,8 +35,6 @@
           Core.AutoDeleteAddedTorrentFile = "Always";
 
           Preferences.WebUI = {
-            AlternativeUIEnabled = true;
-            RootFolder = "${pkgs.vuetorrent}/share/vuetorrent";
             Password_PBKDF2 = "@ByteArray(81hDQhW898bx7J6YVDQqug==:PxQ+tjI064ZYLsoEv/17ZV7DI4sYv70VN7Rg474CepQugoCHXXe+SrzQDcoxU2A6OQDONYPadKMxIRFjlL4ebg==)";
           };
         };
