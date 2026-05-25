@@ -9,5 +9,8 @@
     ];
 
     users.groups.media = { };
+    systemd.tmpfiles.rules = [
+      "d /data/media 0770 admin media"
+    ];
   };
 }
