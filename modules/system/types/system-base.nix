@@ -4,9 +4,9 @@
     imports =
       with self.modules.nixos;
       [
+        root
         boot
         home-manager
-        users
         locale
         impermanence
         sops

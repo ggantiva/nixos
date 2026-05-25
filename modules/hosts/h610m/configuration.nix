@@ -4,6 +4,7 @@
     imports = with self.modules.nixos; [
       # System type
       system-workstation
+      ggantiva
 
       steam
       bottles
