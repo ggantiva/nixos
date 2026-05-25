@@ -1,6 +1,6 @@
 {
   flake.modules.nixos.qbittorrent =
-    { pkgs, ... }:
+    { lib, pkgs, ... }:
     let
       webuiPort = 9091;
       url = "torrent";
@@ -48,6 +48,13 @@
           reverse_proxy localhost:${toString webuiPort}
         }
       '';
+
+      # Avoids issues with permissions https://github.com/nix-community/impermanence/issues/254
+      systemd.services."systemd-tmpfiles-resetup" = {
+        serviceConfig = {
+          RemainAfterExit = lib.mkForce false;
+        };
+      };
 
       custom.impermanence.root.directories = [ profileDir ];
     };
