@@ -1,7 +1,7 @@
 { self, ... }:
 {
   flake.modules.nixos.mediaServer = {
-    imports = with self.modules.nixos.mediaServer; [
+    imports = with self.modules.nixos; [
       qbittorrent
       jellyfin
       sonarr
