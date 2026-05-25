@@ -32,8 +32,8 @@
           port = 2428;
           hostKeys = [ "/persist/etc/ssh/initrd_ssh_host_ed25519_key" ];
           authorizedKeyFiles = [
-            ../../system/id_blue.pub
-            ../../system/id_green.pub
+            ../../users/id_green.pub
+            ../../users/id_blue.pub
           ];
         };
       };
