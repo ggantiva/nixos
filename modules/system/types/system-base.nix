@@ -56,9 +56,6 @@
 
   flake.modules.homeManager.system-base =
     { config, ... }:
-    let
-      inherit (config.constants) user;
-    in
     {
       imports =
         with self.modules.homeManager;
@@ -69,7 +66,7 @@
         ++ (with self.modules.generic; [ constants ]);
 
       home = {
-        homeDirectory = "/home/${user}";
+        homeDirectory = "/home/${config.home.username}";
         stateVersion = "24.11";
       };
     };
