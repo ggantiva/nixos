@@ -89,6 +89,13 @@
             installation_mode = "force_installed";
             private_browsing = true;
           };
+
+          # Linkding
+          "{61a05c39-ad45-4086-946f-32adb0a40a9d}" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/linkding-extension/";
+            installation_mode = "force_installed";
+            private_browsing = true;
+          };
         };
       };
     };
