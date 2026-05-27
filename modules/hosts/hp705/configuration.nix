@@ -6,6 +6,7 @@
       openssh
 
       mediaServer
+      linkding
       admin
       caddy
       vaultwarden
