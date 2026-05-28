@@ -5,7 +5,7 @@
       system-base
       openssh
 
-      mediaServer
+      media-server
       linkding
       admin
       caddy
