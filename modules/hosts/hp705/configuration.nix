@@ -6,6 +6,7 @@
       openssh
 
       media-server
+      miniflux
       linkding
       admin
       caddy
