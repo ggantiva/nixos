@@ -5,7 +5,7 @@
       webuiPort = 9091;
       url = "torrent";
       profileDir = "/var/lib/qBittorrent/";
-      DefaultSavePath = "/misc/media-server/torrents/";
+      DefaultSavePath = "/data/media/torrents/";
       user = "qbittorrent";
       group = "media";
     in
