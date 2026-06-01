@@ -2,6 +2,32 @@
 // https://niri-wm.github.io/niri/Configuration:-Introduction
 include optional=true "~/.config/niri/theme.kdl"
 
+// Autostart
+spawn-at-startup "kitty"
+spawn-at-startup "librewolf"
+spawn-at-startup "vesktop"
+
+window-rule {
+  match app-id="kitty" at-startup=true
+  open-on-workspace "terminal"
+  open-focused false
+  open-maximized true
+}
+
+window-rule {
+  match app-id="librewolf" at-startup=true
+  open-on-workspace "browser"
+  open-focused false
+  open-maximized true
+}
+
+window-rule {
+  match app-id="vesktop" at-startup=true
+  open-on-workspace "chat"
+  open-focused false
+  open-maximized true
+}
+
 // Input device configuration.
 // https://niri-wm.github.io/niri/Configuration:-Input
 input {
@@ -154,17 +180,11 @@ layer-rule {
     }
 }
 
-// Open Maximized
-window-rule {
-  match app-id="discord"
-  match app-id="steam"
-  open-maximized true
-}
-
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
   match app-id=r#"firefox$"# title="^Picture-in-Picture$"
   open-floating true
+  open-focused false
 }
 
 // Fix Steam notifications
