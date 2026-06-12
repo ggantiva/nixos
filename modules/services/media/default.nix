@@ -5,6 +5,7 @@
       qbittorrent
       jellyfin
       sonarr
+      radarr
       prowlarr
     ];
 
