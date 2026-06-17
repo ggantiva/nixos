@@ -1,7 +1,7 @@
 {
   flake.modules.homeManager.kitty = {
     home.file.".config/kitty/sessions/home.kitty-session".text = ''
-      layout splits
+      layout tall
       cd ~
 
       launch --title "Home"
