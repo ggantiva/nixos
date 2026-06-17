@@ -13,7 +13,7 @@
         enable = true;
         settings = {
           # Layout
-          enabled_layouts = "splits,stack";
+          enabled_layouts = "tall,stack";
 
           window_resize_step_cells = 5;
           window_resize_step_lines = 5;

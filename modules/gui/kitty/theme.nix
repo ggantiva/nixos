@@ -9,7 +9,7 @@
         font = {
           name = "Agave Nerd Font Mono";
           package = pkgs.nerd-fonts.agave;
-          size = 14;
+          size = 15.5;
         };
 
         settings = {

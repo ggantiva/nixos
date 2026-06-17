@@ -51,11 +51,11 @@
           name = ".config/kitty/sessions/${name}.kitty-session";
           value = {
             text = ''
-              layout splits
+              layout tall
               cd ${path}
 
               launch --var window=first --title "${name}" vi
-              launch --location=vsplit --bias=20
+              launch --bias=20
 
               focus_matching_window var:window=first
             '';
