@@ -7,7 +7,6 @@
       ggantiva
 
       steam
-      bottles
     ];
 
     networking = {
