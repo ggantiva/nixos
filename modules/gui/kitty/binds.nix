@@ -26,7 +26,7 @@
         "ctrl+shift+end" = "scroll_end";
 
         # Pager
-        "ctrl+shift+[" = "show_scrollback";
+        "ctrl+shift+h" = "show_scrollback";
 
         ### Windows ###
         # Focus
@@ -41,8 +41,13 @@
         "ctrl+alt+k" = "move_window up";
         "ctrl+alt+l" = "move_window right";
 
+        "ctrl+alt+left" = "move_window left";
+        "ctrl+alt+down" = "move_window down";
+        "ctrl+alt+up" = "move_window up";
+        "ctrl+alt+right" = "move_window right";
+
         # Open
-        "ctrl+Space" = "new_window";
+        "ctrl+shift+n" = "new_window";
 
         # Close
         "ctrl+shift+w" = "close_window";
