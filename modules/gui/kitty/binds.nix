@@ -47,7 +47,7 @@
         "ctrl+alt+right" = "move_window right";
 
         # Open
-        "ctrl+shift+n" = "new_window";
+        "ctrl+shift+n" = "new_window_with_cwd";
 
         # Close
         "ctrl+shift+w" = "close_window";
