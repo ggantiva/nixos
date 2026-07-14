@@ -5,6 +5,18 @@
         clear_all_shortcuts = "yes";
         kitty_mod = "ctrl+shift";
       };
+
+      # Vim-kitty-navigator
+      extraConfig = ''
+        map --when-focus-on var:IS_VIM=true alt+h
+        map --when-focus-on var:IS_VIM=true alt+j
+        map --when-focus-on var:IS_VIM=true alt+k
+        map --when-focus-on var:IS_VIM=true alt+l
+
+        allow_remote_control yes
+        listen_on unix:@mykitty
+      '';
+
       keybindings = {
         ### Clipboard ###
         "ctrl+shift+c" = "copy_to_clipboard";
