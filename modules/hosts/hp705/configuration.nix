@@ -5,6 +5,7 @@
       system-base
       openssh
 
+      project-zomboid
       media-server
       miniflux
       linkding
