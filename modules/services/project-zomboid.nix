@@ -28,7 +28,6 @@
             +force_install_dir ${serverDirectory} \
             +login anonymous \
             +app_update 380870 \
-            -beta unstable \
             validate \
             +quit
         '';
