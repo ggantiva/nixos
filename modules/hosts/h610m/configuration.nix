@@ -4,7 +4,6 @@
     imports = with self.modules.nixos; [
       # System type
       system-workstation
-      zfs
       ggantiva
 
       steam
