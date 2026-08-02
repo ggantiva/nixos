@@ -11,8 +11,6 @@
 
     networking = {
       hostName = "h610m";
-      # Needed for ZFS
-      hostId = "a9b2cbfe";
     };
   };
 }
