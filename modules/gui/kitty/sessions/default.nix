@@ -3,8 +3,8 @@
     { lib, pkgs, ... }:
     let
       projects = {
-        "nixos" = "~/.config/nixos";
-        "nvim" = "~/.config/nvim";
+        "nixos" = "~/Development/nixos";
+        "nvim" = "~/Development/nvim";
       };
     in
     {
