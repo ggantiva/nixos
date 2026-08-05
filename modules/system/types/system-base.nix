@@ -20,6 +20,8 @@
     # Don't change
     system.stateVersion = "24.11";
 
+    zramSwap.enable = true;
+
     # Enable flakes
     nix = {
       channel.enable = false;
