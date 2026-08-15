@@ -1,0 +1,33 @@
+// Check the wiki for a full description of the configuration:
+// https://niri-wm.github.io/niri/Configuration:-Introduction
+// Imports
+include "input.kdl"
+include "layout.kdl"
+include "binds.kdl"
+include "window_rules.kdl"
+include "animations.kdl"
+include optional=true "theme.kdl"
+
+// Disable client side decorations
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+hotkey-overlay {
+  skip-at-startup
+}
+
+recent-windows {
+  off
+}
+
+gestures {
+  hot-corners {
+    off
+  }
+}
+
+cursor {
+  xcursor-theme "Simp1e-Dark"
+  xcursor-size 24
+}

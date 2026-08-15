@@ -1,0 +1,76 @@
+binds {
+  // Launch apps
+  Mod+Space { spawn "kitty"; }
+  Mod+D { spawn "fuzzel"; }
+  Mod+B { spawn "librewolf"; }
+  Mod+T { spawn "clock"; }
+  Mod+M {spawn "powermenu"; }
+  
+  // Volume control
+  XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- l 1.0"; }
+  XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+  XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+  
+  Mod+Q repeat=false { close-window; }
+  
+  // Window Movement
+  Mod+H     { focus-column-left-or-last; }
+  Mod+J     { focus-window-down; }
+  Mod+K     { focus-window-up; }
+  Mod+L     { focus-column-right-or-first; }
+  
+  Mod+Shift+H     { move-column-left; }
+  Mod+Shift+J     { move-window-down; }
+  Mod+Shift+K     { move-window-up; }
+  Mod+Shift+L     { move-column-right; }
+  
+  // Workspaces
+  Mod+Y { focus-workspace 1; }
+  Mod+U { focus-workspace 2; }
+  Mod+I { focus-workspace 3; }
+  Mod+O { focus-workspace 4; }
+  Mod+P { focus-workspace 5; }
+  Mod+Shift+Y { move-column-to-workspace 1; }
+  Mod+Shift+U { move-column-to-workspace 2; }
+  Mod+Shift+I { move-column-to-workspace 3; }
+  Mod+Shift+O { move-column-to-workspace 4; }
+  Mod+Shift+P { move-column-to-workspace 5; }
+  
+  // The following binds move the focused window in and out of a column.
+  // If the window is alone, they will consume it into the nearby column to the side.
+  // If the window is already in a column, they will expel it out.
+  Mod+Comma  { consume-or-expel-window-left; }
+  Mod+Period { consume-or-expel-window-right; }
+  
+  // Cycle through widths set in preset-column-widths.
+  Mod+R { switch-preset-column-width; }
+  
+  Mod+F { maximize-column; }
+  Mod+Shift+F { fullscreen-window; }
+  
+  // Move the focused window between the floating and the tiling layout.
+  Mod+Shift+V       { toggle-window-floating; }
+  Mod+V { switch-focus-between-floating-and-tiling; }
+  
+  // Toggle tabbed column display mode.
+  // Windows in this column will appear as vertical tabs,
+  // rather than stacked on top of each other.
+  Mod+W { toggle-column-tabbed-display; }
+  
+  Print { screenshot; }
+  
+  // Applications such as remote-desktop clients and software KVM switches may
+  // request that niri stops processing the keyboard shortcuts defined here
+  // so they may, for example, forward the key presses as-is to a remote machine.
+  // It's a good idea to bind an escape hatch to toggle the inhibitor,
+  // so a buggy application can't hold your session hostage.
+  //
+  // The allow-inhibiting=false property can be applied to other binds as well,
+  // which ensures niri always processes them, even when an inhibitor is active.
+  Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+  
+  // The quit action will show a confirmation dialog to avoid accidental exits.
+  Mod+Shift+E { quit; }
+}
+
