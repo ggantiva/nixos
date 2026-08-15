@@ -1,0 +1,23 @@
+// Settings that influence how windows are positioned and sized.
+// https://niri-wm.github.io/niri/Configuration:-Layout
+layout {
+  gaps 10
+  
+  default-column-width { proportion 0.5; }
+  preset-column-widths {
+    proportion 0.25
+    proportion 0.5
+    proportion 0.75
+  }
+  
+  focus-ring {
+    width 3
+  }
+  
+  // Struts shrink the area occupied by windows, similarly to layer-shell panels.
+  // You can think of them as a kind of outer gaps. They are set in logical pixels.
+  struts {
+    left 25
+    right 25
+  }
+}

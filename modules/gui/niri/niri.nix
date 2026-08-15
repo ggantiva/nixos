@@ -29,7 +29,10 @@
     {
       home = {
         file = {
-          ".config/niri/config.kdl".source = ./niri.kdl;
+          ".config/niri/" = {
+            source = ./config;
+            recursive = true;
+          };
           ".config/niri/theme.kdl".text = ''
             layout {
               background-color "${clr.base00}"

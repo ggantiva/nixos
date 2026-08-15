@@ -1,0 +1,25 @@
+// Animation settings.
+// https://niri-wm.github.io/niri/Configuration:-Animations
+animations {
+  // Slow down all animations by this factor. Values below 1 speed them up instead.
+  slowdown 0.8
+  workspace-switch {
+    off
+  }
+
+  window-open {
+	  off
+  }
+
+  window-close {
+  	off
+  }
+
+  window-resize {
+	  off
+  }
+
+  window-movement {
+	  off
+  }
+}

@@ -1,0 +1,38 @@
+// Window rules let you adjust behavior for individual windows.
+// https://niri-wm.github.io/niri/Configuration:-Window-Rules
+
+// Disable client side window shadows
+window-rule {
+    clip-to-geometry true
+}
+
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+    // This app-id regular expression will work for both:
+    // - host Firefox (app-id is "firefox")
+    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// Fix Steam notifications
+window-rule {
+  match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+  default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
+// Shadows and blur for floating windows
+window-rule {
+  match is-floating=true
+  background-effect {
+    blur true
+    xray false
+  }
+  shadow {
+    on
+    draw-behind-window false
+    spread 5
+    offset x=10 y=10
+    softness 15
+  }
+}
