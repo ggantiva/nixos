@@ -4,7 +4,7 @@ input {
   keyboard {
     xkb {
 	  	layout "us";
-	  	variant "altrgr-intl";
+	  	variant "altgr-intl";
     }
 
   	repeat-rate 50;
