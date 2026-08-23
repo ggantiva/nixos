@@ -10,6 +10,7 @@
         locale
         impermanence
         sops
+        btrfs
       ]
       ++ (with self.modules.generic; [
         constants
