@@ -15,8 +15,8 @@
 
       systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
       users.users.root.openssh.authorizedKeys.keyFiles = [
-        ../../system/id_blue.pub
-        ../../system/id_green.pub
+        ../../users/id_green.pub
+        ../../users/id_blue.pub
       ];
 
       nix.settings.experimental-features = [
