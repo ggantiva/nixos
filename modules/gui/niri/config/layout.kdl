@@ -13,6 +13,14 @@ layout {
   focus-ring {
     width 3
   }
+
+  tab-indicator {
+    position "top"
+    place-within-column
+    length total-proportion=0.8
+    width 5
+    gap 6
+  }
   
   // Struts shrink the area occupied by windows, similarly to layer-shell panels.
   // You can think of them as a kind of outer gaps. They are set in logical pixels.

@@ -45,6 +45,10 @@
                 active-color "${clr.base08}"
               }
 
+              tab-indicator {
+                active-color "${clr.base09}"
+              }
+
               insert-hint {
                 color "${clr.base08}"
               }
