@@ -34,7 +34,6 @@
         system-base
         base16
 
-        kittybg
         niri
         kitty
         fuzzel
@@ -57,6 +56,7 @@
         wiremix
         vesktop
         lazygit
+        bottles
       ];
     };
 }
