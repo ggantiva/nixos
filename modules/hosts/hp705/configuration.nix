@@ -9,7 +9,6 @@
       project-zomboid
       media-server
       miniflux
-      linkding
       caddy
       vaultwarden
       searx
