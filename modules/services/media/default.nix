@@ -7,6 +7,7 @@
       sonarr
       radarr
       prowlarr
+      flaresolverr
     ];
 
     users.groups.media = { };
