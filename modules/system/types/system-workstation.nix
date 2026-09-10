@@ -42,6 +42,7 @@
         osd
         librewolf
         gtk
+        swaybg
 
         wl-clipboard
         yazi
