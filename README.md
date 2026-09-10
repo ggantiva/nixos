@@ -1,5 +1,7 @@
 # NixOS Configuration
 
+![Desktop](./assets/Screenshot.png)
+
 A declarative system configuration using NixOS along with Nix flakes, following
 the dendritic pattern to manage many systems with reusable modules.
 
