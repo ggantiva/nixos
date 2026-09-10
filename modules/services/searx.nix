@@ -28,7 +28,7 @@
           search = {
             safe_search = 2;
             autocomplete = "google";
-            default_lang = "en";
+            default_lang = "es-CO";
           };
 
           # engines = lib.mapAttrsToList (name: value: { inherit name; } // value) {
