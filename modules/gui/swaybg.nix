@@ -2,11 +2,13 @@
   flake.modules.homeManager.swaybg =
     {
       pkgs,
-      config,
       ...
     }:
     let
-      inherit (config.constants) wallpaper;
+      wallpaper = pkgs.fetchurl {
+        url = "https://w.wallhaven.cc/full/3l/wallhaven-3l3lzd.png";
+        hash = "sha256-2+RbpDG1rPGG2vkKzuVAN7Mhg9uPqS3fTwA97BLvhBg=";
+      };
     in
     {
       config = {
