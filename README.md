@@ -91,3 +91,10 @@ nixos-generate-config
 ```
 
 The output file can be imported as a module.
+
+## License
+
+All files in this repository are licensed under the GNU General Public License
+v3.0 or later, unless otherwise stated.
+
+See LICENSE for the full license text.
