@@ -1,6 +1,12 @@
 {
   flake.modules.nixos.niri =
     { pkgs, ... }:
+    let
+      nixpkgs-a5cbcfe9 = builtins.getFlake "github:NixOS/nixpkgs/a5cbcfe954791221bfffe2307f7d1a1bf61a871e";
+
+      xwayland-satellite =
+        nixpkgs-a5cbcfe9.legacyPackages.${pkgs.stdenv.hostPlatform.system}.xwayland-satellite;
+    in
     {
       programs.niri = {
         enable = true;
