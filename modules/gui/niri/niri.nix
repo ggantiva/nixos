@@ -33,34 +33,32 @@
       clr = config.scheme.withHashtag;
     in
     {
-      home = {
-        file = {
-          ".config/niri/" = {
-            source = ./config;
-            recursive = true;
-          };
-          ".config/niri/theme.kdl".text = ''
-            layout {
-              background-color "${clr.base00}"
-
-              shadow {
-                color "${clr.base00}"
-              }
-
-              focus-ring {
-                active-color "${clr.base08}"
-              }
-
-              tab-indicator {
-                active-color "${clr.base09}"
-              }
-
-              insert-hint {
-                color "${clr.base08}"
-              }
-            }
-          '';
+      home.file = {
+        ".config/niri/" = {
+          source = ./config;
+          recursive = true;
         };
+        ".config/niri/theme.kdl".text = ''
+          layout {
+            background-color "${clr.base00}"
+
+            shadow {
+              color "${clr.base00}"
+            }
+
+            focus-ring {
+              active-color "${clr.base08}"
+            }
+
+            tab-indicator {
+              active-color "${clr.base09}"
+            }
+
+            insert-hint {
+              color "${clr.base08}"
+            }
+          }
+        '';
       };
     };
 }
