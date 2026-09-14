@@ -29,7 +29,7 @@ depending on their role.
 │   ├── services/ # self-hosted services, including vaultwarden, jellyfin and more.
 │   ├── system/ # Core settings of the operating system, as well as system types that group modules together.
 │   └── users/ # User accounts,settings and SSH keys
-└── secrets.yaml Sops secrets
+└── secrets.yaml # Sops secrets
 ```
 
 ## Features
