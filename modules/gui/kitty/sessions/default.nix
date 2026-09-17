@@ -54,7 +54,7 @@
               layout tall
               cd ${path}
 
-              launch --var window=first --title "${name}" vi
+              launch --var window=first --title "${name}" nvim
               launch --bias=20
 
               focus_matching_window var:window=first
