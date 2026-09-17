@@ -4,7 +4,7 @@
     { pkgs, ... }:
     {
       imports = with self.modules.nixos; [
-        system-base
+        system-cli
         pipewire
         yubikey
 
@@ -31,7 +31,7 @@
     { pkgs, ... }:
     {
       imports = with self.modules.homeManager; [
-        system-base
+        system-cli
         base16
 
         niri
