@@ -24,10 +24,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nvim-custom = {
-      url = "git+https://codeberg.org/ggantiva/nvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    mnw.url = "github:Gerg-L/mnw";
 
     base16.url = "github:SenchoPens/base16.nix";
     tt-schemes = {
