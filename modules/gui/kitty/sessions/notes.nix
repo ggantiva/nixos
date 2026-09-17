@@ -4,7 +4,7 @@
       layout tall
       cd ~/Notes/
 
-      launch --title "Notes" vi .
+      launch --title "Notes" nvim .
     '';
   };
 }
