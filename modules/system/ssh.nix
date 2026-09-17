@@ -32,6 +32,15 @@
           ];
         };
 
+        "github.com" = {
+          hostname = "github.com";
+          user = "git";
+          identityFile = [
+            "~/.ssh/id_green"
+            "~/.ssh/id_blue"
+          ];
+        };
+
         "hp705" = {
           hostname = "192.168.5.4";
           port = 2428;
