@@ -9,7 +9,7 @@
 
       # Autoload files in lazy
       initLua = /* lua */ ''
-        require('full') 
+        require('full')
         require('lz.n').load('full.plugins')
       '';
 
@@ -29,6 +29,7 @@
           oil-nvim
           mini-statusline
           nvim-treesitter.withAllGrammars
+          otter-nvim
         ];
 
         # Lazy loaded
@@ -46,7 +47,7 @@
       };
 
       # Theme
-      luaFiles = [(pkgs.writeText "theme.lua" /*lua*/''
+      luaFiles = [(pkgs.writeText "theme.lua" /* lua */ ''
           require('mini.base16').setup({
             use_cterm = true,
             palette = {
