@@ -61,6 +61,7 @@
     };
   in
   {
+            render-markdown-nvim
 
     home = {
       packages = [ nvim ];
