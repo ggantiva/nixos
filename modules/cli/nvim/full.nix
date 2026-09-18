@@ -62,6 +62,7 @@
   in
   {
             render-markdown-nvim
+            gitsigns-nvim
 
     home = {
       packages = [ nvim ];
