@@ -29,3 +29,11 @@ map("v", ">", ">gv")
 map("v", "<", "<gv")
 
 map("n", "J", "mzJ`z") -- Keep cursor position when joining
+
+-- Toggle diagnostics
+map("n", "<leader>td", function()
+	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end)
+
+-- Show line diagnostics
+map("n", "<leader>ld", vim.diagnostic.open_float)
