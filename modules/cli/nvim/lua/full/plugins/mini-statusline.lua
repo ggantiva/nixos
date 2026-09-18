@@ -1,8 +1,8 @@
 return {
-  "mini.statusline",
-  lazy = false,
+	"mini.statusline",
+	lazy = false,
 
-  after = function()
-    require('mini.statusline').setup()
-  end,
+	after = function()
+		require("mini.statusline").setup()
+	end,
 }

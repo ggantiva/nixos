@@ -1,13 +1,15 @@
 return {
-    "fzf-lua",
-    cmd = "FzfLua",
+	"fzf-lua",
+	cmd = "FzfLua",
 
-    after = function()
-      require("fzf-lua").setup()
-    end,
-    keys = {
-      { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find Files" },
-      { "<leader>fg", "<cmd>FzfLua live_grep<cr>", desc = "Live Grep" },
-      { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
-    },
+	after = function()
+		require("fzf-lua").setup()
+		FzfLua.register_ui_select()
+	end,
+	keys = {
+		{ "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find Files" },
+		{ "<leader>fg", "<cmd>FzfLua live_grep<cr>", desc = "Live Grep" },
+		{ "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
+		{ "<leader>fc", "<cmd>FzfLua lsp_code_actions<cr>", desc = "Code actions" },
+	},
 }
