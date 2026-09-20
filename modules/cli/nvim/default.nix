@@ -10,8 +10,8 @@
 
         # Autoload files in lazy
         initLua = /* lua */ ''
-          require('full')
-          require('lz.n').load('full.plugins')
+          require('default')
+          require('lz.n').load('default.plugins')
         '';
 
         extraBinPath = with pkgs; [
@@ -58,7 +58,7 @@
             gitsigns-nvim
           ];
 
-          dev.full = {
+          dev.default = {
             pure = ./.;
           };
         };

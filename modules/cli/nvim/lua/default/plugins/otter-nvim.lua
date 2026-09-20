@@ -2,7 +2,7 @@ return {
 	"otter.nvim",
 	lazy = false,
 	dependencies = {
-		"nvim-treesitter/nvim-treesitter",
+		"nvim-treesitter",
 	},
 
 	after = function()
