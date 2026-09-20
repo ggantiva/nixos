@@ -4,7 +4,6 @@
     let
       projects = {
         "nixos" = "~/Development/nixos";
-        "nvim" = "~/Development/nvim";
       };
     in
     {
