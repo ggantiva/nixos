@@ -7,7 +7,7 @@ local options = {
 
 	wrap = false, -- Do not wrap lines by default
 	mouse = "a", -- Enable mouse support
-	signcolumn = "auto",
+	signcolumn = "yes",
 
 	-- Scrolloff
 	scrolloff = 10,
