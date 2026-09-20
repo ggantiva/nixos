@@ -21,6 +21,9 @@
           # LSP
           lua-language-server
           bash-language-server
+          vscode-langservers-extracted
+          typescript-language-server
+          basedpyright
           nixd
 
           # Formatters
@@ -30,6 +33,8 @@
           shfmt
 
           # Linters
+          ruff
+          eslint_d
           shellcheck
           markdownlint-cli2
         ];

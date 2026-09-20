@@ -20,6 +20,11 @@ return {
 				bash = { "shfmt" },
 				sh = { "shfmt" },
 				markdown = { "prettierd", "markdownlint-cli2" },
+				html = { "prettierd" },
+				css = { "prettierd" },
+				javascript = { "prettierd" },
+				typescript = { "prettierd" },
+				python = { "ruff_format" },
 			},
 
 			format_on_save = {
