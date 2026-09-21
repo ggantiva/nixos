@@ -22,6 +22,7 @@
           tab_fade = " 1";
 
           tab_title_template = "{'#' if layout_name == 'stack' else ''}{index}";
+          tab_bar_min_tabs = 1;
 
           # colors
           background = "${clr.base00}";
