@@ -6,6 +6,7 @@
     ];
 
     environment.systemPackages = with pkgs; [
+      p7zip
       file
       tree
     ];
