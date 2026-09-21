@@ -50,6 +50,7 @@
             otter-nvim
             nvim-lint
             conform-nvim
+            friendly-snippets
           ];
 
           # Lazy loaded
@@ -61,6 +62,7 @@
             highlight-undo-nvim
             render-markdown-nvim
             gitsigns-nvim
+            blink-cmp
           ];
 
           dev.default = {
