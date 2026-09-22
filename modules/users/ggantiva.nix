@@ -20,23 +20,11 @@ in
     home-manager.users."${user}" = {
       imports = [ self.modules.homeManager.${user} ];
     };
-
-    sops.secrets = {
-      "private_keys/blue" = {
-        path = "/home/${user}/.ssh/id_blue";
-        owner = "${user}";
-      };
-
-      "private_keys/green" = {
-        path = "/home/${user}/.ssh/id_green";
-        owner = "${user}";
-      };
-    };
   };
 
   flake.modules.homeManager.${user} = {
     imports = with self.modules.homeManager; [
-      system-workstation
+      system-cli
     ];
 
     home = {
