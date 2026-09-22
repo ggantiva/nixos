@@ -67,8 +67,10 @@
         # Resize
         "ctrl+shift+r" = "start_resizing_window";
 
-        # Zoom in
-        "ctrl+shift+z" = "toggle_layout stack";
+        # Layouts
+        "ctrl+shift+z" = "toggle_layout stack"; # Toggle stack (zoom in)
+        "ctrl+shift+," = "toggle_layout fat";
+        "ctrl+shift+." = "toggle_layout tall";
 
         ### Tabs ###
         "ctrl+shift+t" = "new_tab";
