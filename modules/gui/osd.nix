@@ -1,6 +1,12 @@
+{ withSystem, ... }:
 {
   flake.modules.homeManager.osd =
     { pkgs, ... }:
+    let
+      lockscreen = withSystem pkgs.stdenv.hostPlatform.system (
+        { config, ... }: config.packages.lockscreen
+      );
+    in
     {
       home.packages = [
         (pkgs.writeShellApplication {
@@ -16,10 +22,10 @@
 
             case "$options" in
             "   Lock")
-              ${pkgs.swaylock}/bin/swaylock --daemonize
+              ${lockscreen}/bin/lockscreen
               ;;
             "󰤄   Suspend")
-              ${pkgs.swaylock}/bin/swaylock --daemonize
+              ${lockscreen}/bin/lockscreen
               systemctl suspend
               ;;
             "󰜉   Reboot")
