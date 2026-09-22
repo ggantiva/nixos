@@ -1,11 +1,6 @@
 {
   flake.modules.homeManager.kitty =
-    { lib, pkgs, ... }:
-    let
-      projects = {
-        "nixos" = "~/Development/nixos";
-      };
-    in
+    { pkgs, ... }:
     {
       programs.kitty = {
         settings = {
@@ -26,40 +21,64 @@
             runtimeInputs = with pkgs; [
               fzf
               kitty
+              findutils
+              coreutils
+              gnused
             ];
             text = ''
               SESSION_DIR="$HOME/.config/kitty/sessions"
-               if [ ! -d "$SESSION_DIR" ] || [ -z "$(ls -A "$SESSION_DIR")" ]; then
-                 echo "No Sessions found in $SESSION_DIR"
-                 exit 1
-               fi
+              DEV_DIR="$HOME/Development"
 
-               SELECTED=$(find "$SESSION_DIR" -name "*.kitty-session" -exec basename {} .kitty-session \; | \
-                          fzf --style full --reverse --prompt="Select Session: ")
+              mkdir -p "$SESSION_DIR"
 
-               if [ -z "$SELECTED" ]; then
-                 exit 0
-               fi
+              # Collect static session names
+              sessions=""
+              if [ -d "$SESSION_DIR" ]; then
+                sessions=$(find "$SESSION_DIR" -maxdepth 1 -name "*.kitty-session" -exec basename {} .kitty-session \;)
+              fi
 
-               kitty @ action goto_session "$SESSION_DIR/$SELECTED.kitty-session"
-            '';
-          })
-        ];
+              # Collect project directories from ~/Development
+              projects=""
+              if [ -d "$DEV_DIR" ]; then
+                projects=$(find "$DEV_DIR" -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
+              fi
 
-        file = lib.attrsets.mapAttrs' (name: path: {
-          name = ".config/kitty/sessions/${name}.kitty-session";
-          value = {
-            text = ''
+              # Combine unique session and project names
+              all_targets=$(printf '%s\n%s\n' "$sessions" "$projects" | sed '/^$/d' | sort -u)
+
+              if [ -z "$all_targets" ]; then
+                echo "No sessions or projects found"
+                exit 1
+              fi
+
+              SELECTED=$(echo "$all_targets" | fzf --style full --reverse --prompt="Select Session: ")
+
+              if [ -z "$SELECTED" ]; then
+                exit 0
+              fi
+
+              TARGET_SESSION_FILE="$SESSION_DIR/$SELECTED.kitty-session"
+
+              # If session file does not exist, generate it for ~/Development project
+              if [ ! -f "$TARGET_SESSION_FILE" ] && [ -d "$DEV_DIR/$SELECTED" ]; then
+                cat <<EOF > "$TARGET_SESSION_FILE"
               layout tall
-              cd ${path}
+              cd $DEV_DIR/$SELECTED
 
-              launch --var window=first --title "${name}" nvim
+              launch --var window=first --title "$SELECTED" nvim
               launch --bias=20
 
               focus_matching_window var:window=first
+              EOF
+              fi
+
+              # Jump to session
+              if [ -f "$TARGET_SESSION_FILE" ]; then
+                kitty @ action goto_session "$TARGET_SESSION_FILE"
+              fi
             '';
-          };
-        }) projects;
+          })
+        ];
       };
     };
 }
