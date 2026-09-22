@@ -6,9 +6,7 @@
       openssh
       admin
 
-      project-zomboid
       media-server
-      miniflux
       caddy
       vaultwarden
       searx
