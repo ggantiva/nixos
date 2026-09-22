@@ -4,7 +4,7 @@
     imports = with self.modules.nixos; [
       system-base
       openssh
-      admin
+      ggantiva
 
       media-server
       caddy

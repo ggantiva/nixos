@@ -1,7 +1,7 @@
 { self, ... }:
 {
   flake.modules.nixos.system-workstation =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       imports = with self.modules.nixos; [
         system-cli
@@ -12,6 +12,22 @@
         niri
         swaylock
       ];
+
+      home-manager.users."${config.constants.user}".imports = [
+        self.modules.homeManager.system-workstation
+      ];
+
+      sops.secrets = {
+        "private_keys/blue" = {
+          path = "/home/${config.constants.user}/.ssh/id_blue";
+          owner = "${config.constants.user}";
+        };
+
+        "private_keys/green" = {
+          path = "/home/${config.constants.user}/.ssh/id_green";
+          owner = "${config.constants.user}";
+        };
+      };
 
       fonts = {
         packages = with pkgs; [
