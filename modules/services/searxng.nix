@@ -11,11 +11,7 @@
           };
 
           server = {
-            method = "GET";
-            port = 8888;
-            bind_address = "0.0.0.0";
             secret_key = "@SEARX_SECRET_KEY@";
-            base_url = "https://searx.ggantiva.com";
           };
 
           outgoing = {
@@ -29,6 +25,7 @@
             safe_search = 2;
             autocomplete = "google";
             default_lang = "es-CO";
+            favicon_resolver = "google";
           };
 
           # engines = lib.mapAttrsToList (name: value: { inherit name; } // value) {
