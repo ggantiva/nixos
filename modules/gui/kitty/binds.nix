@@ -26,6 +26,8 @@
         # Line
         "ctrl+shift+k" = "scroll_line_up";
         "ctrl+shift+j" = "scroll_line_down";
+        "ctrl+shift+up" = "scroll_line_up";
+        "ctrl+shift+down" = "scroll_line_down";
 
         # Page
         "ctrl+shift+page_up" = "scroll_page_up";
