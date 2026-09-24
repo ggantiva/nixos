@@ -10,7 +10,7 @@
 
         keybindings = {
           "ctrl+shift+s" =
-            "launch --allow-remote-control --title session-select --type tab kitty-session-fzf";
+            "launch --allow-remote-control --title session-select --type tab --title 'misc-tab' kitty-session-fzf";
         };
       };
 
