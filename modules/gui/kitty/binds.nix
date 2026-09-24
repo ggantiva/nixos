@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.kitty = {
+  flake.modules.homeManager.kitty = { pkgs, ... }: {
     programs.kitty = {
       settings = {
         clear_all_shortcuts = "yes";
@@ -93,6 +93,7 @@
         ### Misc ###
         "ctrl+shift+e" = "open_url_with_hints";
         "ctrl+shift+u" = "kitten unicode_input";
+        "ctrl+shift+g" = "launch --cwd=current --title misc-tab --type=tab ${pkgs.lazygit}/bin/lazygit";
       };
     };
   };
