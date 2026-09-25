@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.fuzzel =
-    { config, ... }:
+    { config, pkgs, ... }:
     let
       clr = config.scheme;
     in
@@ -19,7 +19,7 @@
             lines = "10";
             width = "25";
             font = "Noto Sans:size=12";
-            terminal = "foot -a '{cmd}' -T '{cmd}' {cmd}";
+            terminal = "${pkgs.kitty}/bin/kitty {cmd}";
           };
 
           border = {
