@@ -13,10 +13,6 @@
         swaylock
       ];
 
-      home-manager.users."${config.constants.user}".imports = [
-        self.modules.homeManager.system-workstation
-      ];
-
       sops.secrets = {
         "private_keys/blue" = {
           path = "/home/${config.constants.user}/.ssh/id_blue";

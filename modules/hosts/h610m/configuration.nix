@@ -9,6 +9,10 @@
       steam
     ];
 
+    home-manager.users.ggantiva.imports = with self.modules.homeManager; [
+      system-workstation
+    ];
+
     networking = {
       hostName = "h610m";
       useNetworkd = true;

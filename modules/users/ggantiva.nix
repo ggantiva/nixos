@@ -23,10 +23,6 @@ in
   };
 
   flake.modules.homeManager.${user} = {
-    imports = with self.modules.homeManager; [
-      system-cli
-    ];
-
     home = {
       username = "${user}";
       file = {
