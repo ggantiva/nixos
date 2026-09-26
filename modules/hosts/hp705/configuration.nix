@@ -10,6 +10,11 @@
       caddy
       vaultwarden
       searx
+      homepage
+    ];
+
+    home-manager.users.ggantiva.imports = with self.modules.homeManager; [
+      system-cli
     ];
 
     networking = {
