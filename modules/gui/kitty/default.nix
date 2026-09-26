@@ -1,3 +1,4 @@
+{ self, ... }:
 {
   flake.modules.homeManager.kitty =
     {
@@ -20,7 +21,7 @@
           startup_session = "~/.config/kitty/sessions/home.kitty-session";
 
           # Pager
-          scrollback_pager = "${pkgs.neovim}/bin/nvim --cmd 'set eventignore=FileType' +'hi Normal guibg=NONE ctermbg=NONE' +'nnoremap q ZQ' +'vnoremap y \"+y<cmd>q!<cr>' +'call nvim_open_term(0, {})' +'set nomodified laststatus=0 nolist clipboard+=unnamedplus' +'$' -";
+          scrollback_pager = "${self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-pager}/bin/nvim-pager -";
         };
       };
     };
