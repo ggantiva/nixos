@@ -70,6 +70,7 @@
         vesktop
         lazygit
         bottles
+        antigravity-cli
       ];
     };
 }
