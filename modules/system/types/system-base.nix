@@ -11,6 +11,7 @@
         impermanence
         sops
         btrfs
+        homepage-options
       ]
       ++ (with self.modules.generic; [
         constants

@@ -1,6 +1,11 @@
 {
   flake.modules.nixos.searx =
     { config, ... }:
+    let
+      port = 8888;
+      subdomain = "searx";
+      domain = "${subdomain}.${config.constants.domain}";
+    in
     {
       services.searx = {
         enable = true;
@@ -11,6 +16,7 @@
           };
 
           server = {
+            inherit port;
             secret_key = "@SEARX_SECRET_KEY@";
           };
 
@@ -41,12 +47,33 @@
         };
       };
 
-      services.caddy.virtualHosts."*.ggantiva.com".extraConfig = ''
-        @searx host searx.ggantiva.com
-        handle @searx {
-          reverse_proxy localhost:8888
+      services.caddy.virtualHosts."*.${config.constants.domain}".extraConfig = ''
+        @${subdomain} host ${domain}
+        handle @${subdomain} {
+          reverse_proxy localhost:${toString port}
         }
       '';
+
+      custom.homepage = {
+        services.searxng = {
+          group = "Utilities";
+          name = "SearXNG";
+          icon = "searxng.png";
+          href = "https://${domain}";
+          description = "Metasearch Engine";
+          siteMonitor = "https://${domain}";
+        };
+
+        widgets = [
+          {
+            search = {
+              provider = "custom";
+              url = "https://${domain}/search?q=";
+              target = "_blank";
+            };
+          }
+        ];
+      };
 
       sops.secrets.searx-key = { };
     };
