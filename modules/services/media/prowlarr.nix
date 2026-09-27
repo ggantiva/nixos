@@ -27,6 +27,23 @@
         }
       '';
 
+      custom.impermanence.root.directories = [ "/var/lib/private/prowlarr" ];
+
+      # Avoids issues with permissions https://github.com/nix-community/impermanence/issues/254
+      systemd.services."systemd-tmpfiles-resetup" = {
+        serviceConfig = {
+          RemainAfterExit = lib.mkForce false;
+        };
+      };
+    };
+
+  flake.modules.nixos.homepage =
+    { config, lib, ... }:
+    let
+      subdomain = "prowlarr";
+      domain = "${subdomain}.${config.constants.domain}";
+    in
+    lib.mkIf config.services.prowlarr.enable {
       sops.secrets.homepage-prowlarr = { };
 
       custom.homepage = {
@@ -44,15 +61,6 @@
             url = "https://${domain}";
             key = "{{HOMEPAGE_VAR_PROWLARR_KEY}}";
           };
-        };
-      };
-
-      custom.impermanence.root.directories = [ "/var/lib/private/prowlarr" ];
-
-      # Avoids issues with permissions https://github.com/nix-community/impermanence/issues/254
-      systemd.services."systemd-tmpfiles-resetup" = {
-        serviceConfig = {
-          RemainAfterExit = lib.mkForce false;
         };
       };
     };

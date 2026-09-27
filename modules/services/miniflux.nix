@@ -24,6 +24,18 @@
         '';
       };
 
+      sops.secrets.miniflux-creds = { };
+
+      custom.impermanence.root.directories = [ "/var/lib/postgresql" ];
+    };
+
+  flake.modules.nixos.homepage =
+    { config, lib, ... }:
+    let
+      subdomain = "rss";
+      domain = "${subdomain}.${config.constants.domain}";
+    in
+    lib.mkIf config.services.miniflux.enable {
       custom.homepage.services.miniflux = {
         group = "Utilities";
         name = "Miniflux";
@@ -32,9 +44,5 @@
         description = "RSS Feed Reader";
         siteMonitor = "https://${domain}";
       };
-
-      sops.secrets.miniflux-creds = { };
-
-      custom.impermanence.root.directories = [ "/var/lib/postgresql" ];
     };
 }

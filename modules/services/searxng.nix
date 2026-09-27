@@ -54,6 +54,16 @@
         }
       '';
 
+      sops.secrets.searx-key = { };
+    };
+
+  flake.modules.nixos.homepage =
+    { config, lib, ... }:
+    let
+      subdomain = "searx";
+      domain = "${subdomain}.${config.constants.domain}";
+    in
+    lib.mkIf config.services.searx.enable {
       custom.homepage = {
         services.searxng = {
           group = "Utilities";
@@ -74,7 +84,5 @@
           }
         ];
       };
-
-      sops.secrets.searx-key = { };
     };
 }

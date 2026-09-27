@@ -18,7 +18,15 @@
          reverse_proxy localhost:${toString port}
         }
       '';
+    };
 
+  flake.modules.nixos.homepage =
+    { config, lib, ... }:
+    let
+      subdomain = "flaresolverr";
+      domain = "${subdomain}.${config.constants.domain}";
+    in
+    lib.mkIf config.services.flaresolverr.enable {
       custom.homepage.services.flaresolverr = {
         group = "Media";
         name = "FlareSolverr";
