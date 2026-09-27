@@ -27,6 +27,16 @@
         }
       '';
 
+      custom.impermanence.root.directories = [ "/var/lib/sonarr/.config/NzbDrone" ];
+    };
+
+  flake.modules.nixos.homepage =
+    { config, lib, ... }:
+    let
+      subdomain = "sonarr";
+      domain = "${subdomain}.${config.constants.domain}";
+    in
+    lib.mkIf config.services.sonarr.enable {
       sops.secrets.homepage-sonarr = { };
 
       custom.homepage = {
@@ -47,7 +57,5 @@
           };
         };
       };
-
-      custom.impermanence.root.directories = [ "/var/lib/sonarr/.config/NzbDrone" ];
     };
 }

@@ -28,7 +28,15 @@
           reverse_proxy localhost:${toString port}
         }
       '';
+    };
 
+  flake.modules.nixos.homepage =
+    { config, lib, ... }:
+    let
+      subdomain = "jellyfin";
+      domain = "${subdomain}.${config.constants.domain}";
+    in
+    lib.mkIf config.services.jellyfin.enable {
       sops.secrets.homepage-jellyfin = { };
 
       custom.homepage = {

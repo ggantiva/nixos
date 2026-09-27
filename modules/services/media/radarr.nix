@@ -27,6 +27,16 @@
         }
       '';
 
+      custom.impermanence.root.directories = [ "/var/lib/radarr/.config/Radarr" ];
+    };
+
+  flake.modules.nixos.homepage =
+    { config, lib, ... }:
+    let
+      subdomain = "radarr";
+      domain = "${subdomain}.${config.constants.domain}";
+    in
+    lib.mkIf config.services.radarr.enable {
       sops.secrets.homepage-radarr = { };
 
       custom.homepage = {
@@ -46,7 +56,5 @@
           };
         };
       };
-
-      custom.impermanence.root.directories = [ "/var/lib/radarr/.config/Radarr" ];
     };
 }

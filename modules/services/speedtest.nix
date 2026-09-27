@@ -36,8 +36,23 @@
           owner = "speedtest-tracker";
           group = "caddy";
         };
-        homepage-speedtest = { };
       };
+
+      custom.impermanence.root.directories = [ dataDir ];
+    };
+
+  flake.modules.nixos.homepage =
+    {
+      config,
+      lib,
+      ...
+    }:
+    let
+      subdomain = "speedtest";
+      domain = "${subdomain}.${config.constants.domain}";
+    in
+    lib.mkIf config.services.speedtest-tracker.enable {
+      sops.secrets.homepage-speedtest = { };
 
       custom.homepage = {
         environmentFiles = [ config.sops.secrets.homepage-speedtest.path ];
@@ -57,7 +72,5 @@
           };
         };
       };
-
-      custom.impermanence.root.directories = [ dataDir ];
     };
 }

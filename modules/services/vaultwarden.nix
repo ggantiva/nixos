@@ -26,6 +26,16 @@
         }
       '';
 
+      custom.impermanence.root.directories = [ "/var/lib/vaultwarden" ];
+    };
+
+  flake.modules.nixos.homepage =
+    { config, lib, ... }:
+    let
+      subdomain = "vault";
+      domain = "${subdomain}.${config.constants.domain}";
+    in
+    lib.mkIf config.services.vaultwarden.enable {
       custom.homepage.services.vaultwarden = {
         group = "Utilities";
         name = "Vaultwarden";
@@ -34,7 +44,5 @@
         description = "Password Manager";
         siteMonitor = "https://${domain}";
       };
-
-      custom.impermanence.root.directories = [ "/var/lib/vaultwarden" ];
     };
 }

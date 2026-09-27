@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.modules.nixos.homepage-options =
+  flake.modules.nixos.homepage =
     {
       config,
       lib,
@@ -10,6 +10,7 @@
       subdomain = "dash";
       domain = "${subdomain}.${config.constants.domain}";
       port = 8082;
+      cfg = config.custom.homepage;
     in
     {
       options.custom.homepage = {
@@ -93,93 +94,83 @@
           description = "Auto-registered services for Homepage.";
         };
       };
-    };
 
-  flake.modules.nixos.homepage =
-    {
-      config,
-      lib,
-      ...
-    }:
-    let
-      cfg = config.custom.homepage;
-      subdomain = "dash";
-    in
-    {
-      # Default top widget: host resources
-      custom.homepage.widgets = lib.mkBefore [
-        {
-          resources = {
-            cpu = true;
-            memory = true;
-            disk = "/data";
-            uptime = true;
-            network = true;
-          };
-        }
-      ];
-
-      services.homepage-dashboard = {
-        enable = true;
-        listenPort = cfg.port;
-        allowedHosts = "*";
-        environmentFiles = cfg.environmentFiles;
-
-        settings = {
-          title = "Dashboard";
-          theme = "dark";
-          color = "slate";
-          headerStyle = "clean";
-          background = {
-            image = config.constants.wallpaper.url;
-            blur = "sm";
-          };
-          layout = {
-            "Media" = {
-              style = "row";
-              columns = 4;
+      config = {
+        # Default top widget: host resources
+        custom.homepage.widgets = lib.mkBefore [
+          {
+            resources = {
+              cpu = true;
+              memory = true;
+              disk = "/data";
+              uptime = true;
+              network = true;
             };
-            "Utilities" = {
-              style = "row";
-              columns = 4;
+          }
+        ];
+
+        services.homepage-dashboard = {
+          enable = true;
+          listenPort = cfg.port;
+          allowedHosts = "*";
+          environmentFiles = cfg.environmentFiles;
+
+          settings = {
+            title = "Dashboard";
+            theme = "dark";
+            color = "slate";
+            headerStyle = "clean";
+            background = {
+              image = config.constants.wallpaper.url;
+              blur = "sm";
+            };
+            layout = {
+              "Media" = {
+                style = "row";
+                columns = 4;
+              };
+              "Utilities" = {
+                style = "row";
+                columns = 4;
+              };
             };
           };
+
+          widgets = cfg.widgets;
+
+          services =
+            let
+              sortedServices = lib.sort (a: b: a.weight < b.weight || (a.weight == b.weight && a.name < b.name)) (
+                lib.attrValues cfg.services
+              );
+              byGroup = lib.groupBy (s: s.group) sortedServices;
+            in
+            lib.mapAttrsToList (groupName: sList: {
+              "${groupName}" = map (s: {
+                "${s.name}" = {
+                  inherit (s) icon href;
+                }
+                // lib.optionalAttrs (s.description != "") { inherit (s) description; }
+                // lib.optionalAttrs (s.siteMonitor != null) { inherit (s) siteMonitor; }
+                // lib.optionalAttrs (s.widget != null) { inherit (s) widget; };
+              }) sList;
+            }) byGroup;
         };
 
-        widgets = cfg.widgets;
+        services.caddy.virtualHosts."*.${config.constants.domain}".extraConfig = ''
+          @${subdomain} host ${cfg.domain}
+          handle @${subdomain} {
+            reverse_proxy localhost:${toString cfg.port}
+          }
+        '';
 
-        services =
-          let
-            sortedServices = lib.sort (a: b: a.weight < b.weight || (a.weight == b.weight && a.name < b.name)) (
-              lib.attrValues cfg.services
-            );
-            byGroup = lib.groupBy (s: s.group) sortedServices;
-          in
-          lib.mapAttrsToList (groupName: sList: {
-            "${groupName}" = map (s: {
-              "${s.name}" = {
-                inherit (s) icon href;
-              }
-              // lib.optionalAttrs (s.description != "") { inherit (s) description; }
-              // lib.optionalAttrs (s.siteMonitor != null) { inherit (s) siteMonitor; }
-              // lib.optionalAttrs (s.widget != null) { inherit (s) widget; };
-            }) sList;
-          }) byGroup;
-      };
+        custom.impermanence.root.directories = [ "/var/lib/private/homepage-dashboard" ];
 
-      services.caddy.virtualHosts."*.${config.constants.domain}".extraConfig = ''
-        @${subdomain} host ${cfg.domain}
-        handle @${subdomain} {
-          reverse_proxy localhost:${toString cfg.port}
-        }
-      '';
-
-      custom.impermanence.root.directories = [ "/var/lib/private/homepage-dashboard" ];
-
-      # Avoids issues with permissions https://github.com/nix-community/impermanence/issues/254
-      systemd.services."systemd-tmpfiles-resetup" = {
-        serviceConfig = {
-          RemainAfterExit = lib.mkForce false;
+        # Avoids issues with permissions https://github.com/nix-community/impermanence/issues/254
+        systemd.services."systemd-tmpfiles-resetup" = {
+          serviceConfig = {
+            RemainAfterExit = lib.mkForce false;
+          };
         };
       };
     };

@@ -52,6 +52,23 @@
         }
       '';
 
+      # Avoids issues with permissions https://github.com/nix-community/impermanence/issues/254
+      systemd.services."systemd-tmpfiles-resetup" = {
+        serviceConfig = {
+          RemainAfterExit = lib.mkForce false;
+        };
+      };
+
+      custom.impermanence.root.directories = [ profileDir ];
+    };
+
+  flake.modules.nixos.homepage =
+    { config, lib, ... }:
+    let
+      subdomain = "torrent";
+      domain = "${subdomain}.${config.constants.domain}";
+    in
+    lib.mkIf config.services.qbittorrent.enable {
       sops.secrets.homepage-qbittorrent = { };
 
       custom.homepage = {
@@ -71,14 +88,5 @@
           };
         };
       };
-
-      # Avoids issues with permissions https://github.com/nix-community/impermanence/issues/254
-      systemd.services."systemd-tmpfiles-resetup" = {
-        serviceConfig = {
-          RemainAfterExit = lib.mkForce false;
-        };
-      };
-
-      custom.impermanence.root.directories = [ profileDir ];
     };
 }
