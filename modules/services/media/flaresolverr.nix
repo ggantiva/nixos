@@ -1,21 +1,32 @@
 {
   flake.modules.nixos.flaresolverr =
+    { config, ... }:
     let
       port = 8191;
-      url = "flaresolverr";
+      subdomain = "flaresolverr";
+      domain = "${subdomain}.${config.constants.domain}";
     in
     {
       services.flaresolverr = {
         enable = true;
+        inherit port;
       };
 
-      services.caddy.virtualHosts."*.ggantiva.com".extraConfig = ''
-        @${url} host ${url}.ggantiva.com
-        handle @${url} {
+      services.caddy.virtualHosts."*.${config.constants.domain}".extraConfig = ''
+        @${subdomain} host ${domain}
+        handle @${subdomain} {
          reverse_proxy localhost:${toString port}
         }
       '';
 
-      # custom.impermanence.root.directories = [ "/var/lib/sonarr/.config/NzbDrone" ];
+      custom.homepage.services.flaresolverr = {
+        group = "Media";
+        name = "FlareSolverr";
+        icon = "flaresolverr.png";
+        href = "https://${domain}";
+        description = "Cloudflare Challenge Solver";
+        siteMonitor = "https://${domain}";
+        weight = 6;
+      };
     };
 }

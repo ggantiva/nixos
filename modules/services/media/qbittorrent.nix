@@ -1,9 +1,14 @@
 {
   flake.modules.nixos.qbittorrent =
-    { lib, ... }:
+    {
+      config,
+      lib,
+      ...
+    }:
     let
-      webuiPort = 9091;
-      url = "torrent";
+      port = 9091;
+      subdomain = "torrent";
+      domain = "${subdomain}.${config.constants.domain}";
       profileDir = "/var/lib/qBittorrent/";
       DefaultSavePath = "/data/media/torrents/";
       user = "qbittorrent";
@@ -12,7 +17,7 @@
     {
       services.qbittorrent = {
         enable = true;
-        inherit webuiPort;
+        webuiPort = port;
         inherit user;
         inherit group;
         serverConfig = {
@@ -40,12 +45,32 @@
         };
       };
 
-      services.caddy.virtualHosts."*.ggantiva.com".extraConfig = ''
-        @${url} host ${url}.ggantiva.com
-        handle @${url} {
-          reverse_proxy localhost:${toString webuiPort}
+      services.caddy.virtualHosts."*.${config.constants.domain}".extraConfig = ''
+        @${subdomain} host ${domain}
+        handle @${subdomain} {
+          reverse_proxy localhost:${toString port}
         }
       '';
+
+      sops.secrets.homepage-qbittorrent = { };
+
+      custom.homepage = {
+        environmentFiles = [ config.sops.secrets.homepage-qbittorrent.path ];
+        services.qbittorrent = {
+          group = "Media";
+          name = "qBittorrent";
+          icon = "qbittorrent.png";
+          href = "https://${domain}";
+          description = "BitTorrent Client";
+          siteMonitor = "https://${domain}";
+          weight = 5;
+          widget = {
+            type = "qbittorrent";
+            url = "https://${domain}";
+            key = "{{HOMEPAGE_VAR_QBITTORENT_KEY}}";
+          };
+        };
+      };
 
       # Avoids issues with permissions https://github.com/nix-community/impermanence/issues/254
       systemd.services."systemd-tmpfiles-resetup" = {

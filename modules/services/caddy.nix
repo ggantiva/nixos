@@ -13,7 +13,7 @@
           hash = "sha256-jNV5COlQTKSJJk8gUZ3KEs8SGC8Z7Aiy5fk7/DvkXIo=";
         };
 
-        virtualHosts."*.ggantiva.com".extraConfig = ''
+        virtualHosts."*.${config.constants.domain}".extraConfig = ''
           tls {
             dns cloudflare {env.CF_API_TOKEN}
             propagation_delay 2m
