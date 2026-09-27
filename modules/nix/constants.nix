@@ -14,8 +14,8 @@
       config.constants = {
         user = "ggantiva";
         wallpaper = pkgs.fetchurl {
-          url = "https://w.wallhaven.cc/full/3l/wallhaven-3l3lzd.png";
-          hash = "sha256-2+RbpDG1rPGG2vkKzuVAN7Mhg9uPqS3fTwA97BLvhBg=";
+          url = "https://w.wallhaven.cc/full/21/wallhaven-216z59.jpg";
+          hash = "sha256-V4TLEDHMLVezADMwbclK2MIZK2c3w3EumaSXg35ntG8=";
         };
       };
     };
