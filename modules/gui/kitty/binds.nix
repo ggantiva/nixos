@@ -75,7 +75,7 @@
         "ctrl+shift+." = "toggle_layout tall";
 
         ### Tabs ###
-        "ctrl+shift+t" = "new_tab";
+        "ctrl+shift+t" = "new_tab_with_cwd";
         "ctrl+shift+q" = "close_tab";
 
         # Focus

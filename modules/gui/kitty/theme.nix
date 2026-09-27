@@ -5,6 +5,8 @@
       clr = config.scheme.withHashtag;
     in
     {
+      home.file.".config/kitty/tab_bar.py".source = ./tab_bar.py;
+
       programs.kitty = {
         font = {
           name = "Agave Nerd Font Mono";
@@ -17,8 +19,8 @@
 
           # Tabs
           tab_bar_edge = "top";
-          tab_bar_align = "center";
-          tab_bar_style = "fade";
+          tab_bar_align = "left";
+          tab_bar_style = "custom";
           tab_fade = " 1";
 
           tab_title_template = "{'#' if layout_name == 'stack' else ''}{'@' if title == 'misc-tab' else index}";
