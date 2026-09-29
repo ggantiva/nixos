@@ -28,6 +28,7 @@ in
       file = {
         ".ssh/id_blue.pub".source = ./id_blue.pub;
         ".ssh/id_green.pub".source = ./id_green.pub;
+        ".ssh/id_backup.pub".source = ./id_backup.pub;
       };
     };
   };

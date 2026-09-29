@@ -50,6 +50,15 @@
             "~/.ssh/id_blue"
           ];
         };
+
+        "hp705-backup" = {
+          hostname = "192.168.5.4";
+          port = 2428;
+          user = "backup";
+          identityFile = [
+            "~/.ssh/id_backup"
+          ];
+        };
       };
     };
   };

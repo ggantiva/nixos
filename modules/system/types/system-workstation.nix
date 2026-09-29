@@ -23,6 +23,11 @@
           path = "/home/${config.constants.user}/.ssh/id_green";
           owner = "${config.constants.user}";
         };
+
+        "private_keys/backup" = {
+          path = "/home/${config.constants.user}/.ssh/id_backup";
+          owner = "${config.constants.user}";
+        };
       };
 
       fonts = {
@@ -63,6 +68,7 @@
         btop
         git
         nvim
+        thunderbird
       ];
 
       home.packages = with pkgs; [
