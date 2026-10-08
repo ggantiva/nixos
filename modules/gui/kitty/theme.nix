@@ -16,6 +16,7 @@
 
         settings = {
           disable_ligatures = "always";
+          enable_audio_bell = "no";
 
           # Tabs
           tab_bar_edge = "top";
