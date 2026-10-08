@@ -76,6 +76,7 @@
         vesktop
         lazygit
         bottles
+        openspec
         antigravity-cli
       ];
     };
