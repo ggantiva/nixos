@@ -43,6 +43,7 @@
 
       systemd.tmpfiles.rules = [
         "d ${ingestDir} 0770 ${user} ${group} -"
+        "A+ ${ingestDir} - - - - d:u:shelfmark:rwx,u:shelfmark:rwx,d:u:${user}:rwx,u:${user}:rwx"
         "d ${dataDir}/config 0770 ${user} ${group} -"
         "d ${libraryDir} 0770 ${user} ${group} -"
         "d ${dataDir}/plugins 0770 ${user} ${group} -"
