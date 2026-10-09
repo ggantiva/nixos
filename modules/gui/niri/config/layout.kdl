@@ -29,3 +29,18 @@ layout {
   //   right 25
   // }
 }
+
+workspace "Y" {
+}
+
+workspace "U" {
+}
+
+workspace "I" {
+}
+
+workspace "O" {
+}
+
+workspace "P" {
+}

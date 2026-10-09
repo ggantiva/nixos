@@ -26,16 +26,16 @@ binds {
   Mod+Shift+L     { move-column-right; }
   
   // Workspaces
-  Mod+Y { focus-workspace 1; }
-  Mod+U { focus-workspace 2; }
-  Mod+I { focus-workspace 3; }
-  Mod+O { focus-workspace 4; }
-  Mod+P { focus-workspace 5; }
-  Mod+Shift+Y { move-column-to-workspace 1; }
-  Mod+Shift+U { move-column-to-workspace 2; }
-  Mod+Shift+I { move-column-to-workspace 3; }
-  Mod+Shift+O { move-column-to-workspace 4; }
-  Mod+Shift+P { move-column-to-workspace 5; }
+  Mod+Y { focus-workspace "Y"; }
+  Mod+U { focus-workspace "U"; }
+  Mod+I { focus-workspace "I"; }
+  Mod+O { focus-workspace "O"; }
+  Mod+P { focus-workspace "P"; }
+  Mod+Shift+Y { move-column-to-workspace "Y"; }
+  Mod+Shift+U { move-column-to-workspace "U"; }
+  Mod+Shift+I { move-column-to-workspace "I"; }
+  Mod+Shift+O { move-column-to-workspace "O"; }
+  Mod+Shift+P { move-column-to-workspace "P"; }
   
   // The following binds move the focused window in and out of a column.
   // If the window is alone, they will consume it into the nearby column to the side.
