@@ -34,7 +34,7 @@
         href = "https://${domain}";
         description = "Cloudflare Challenge Solver";
         siteMonitor = "https://${domain}";
-        weight = 6;
+        weight = 7;
       };
     };
 }
