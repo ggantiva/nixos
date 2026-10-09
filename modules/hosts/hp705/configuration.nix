@@ -15,6 +15,7 @@
         homepage
         speedtest
         calibre-web-automated
+        shelfmark
       ];
 
       home-manager.users.ggantiva.imports = with self.modules.homeManager; [
