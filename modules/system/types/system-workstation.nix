@@ -55,7 +55,6 @@
         kitty
         fuzzel
         zathura
-        mako
         osd
         librewolf
         gtk
