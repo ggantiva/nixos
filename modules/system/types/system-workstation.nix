@@ -7,6 +7,7 @@
         system-cli
         pipewire
         yubikey
+        network-manager
 
         greetd
         niri
