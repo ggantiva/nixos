@@ -77,6 +77,7 @@
         bottles
         openspec
         antigravity-cli
+        quickshell
       ];
     };
 }
