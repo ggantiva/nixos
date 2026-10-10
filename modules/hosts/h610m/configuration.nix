@@ -15,7 +15,6 @@
 
     networking = {
       hostName = "h610m";
-      useNetworkd = true;
     };
   };
 }
