@@ -60,7 +60,7 @@
         osd
         librewolf
         gtk
-        swaybg
+        kittybg
 
         wl-clipboard
         yazi
@@ -73,7 +73,7 @@
       ];
 
       home.packages = with pkgs; [
-        wiremix
+        pavucontrol
         vesktop
         lazygit
         bottles
