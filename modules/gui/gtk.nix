@@ -1,11 +1,12 @@
 {
   flake.modules.homeManager.gtk =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       gtk = {
         enable = true;
 
         theme.name = "Adwaita";
+        colorScheme = "dark";
 
         iconTheme = {
           package = pkgs.morewaita-icon-theme;
@@ -18,12 +19,7 @@
           size = 12;
         };
 
-        gtk3.extraConfig = {
-          gtk-application-prefer-dark-theme = 1;
-        };
-
-        # See: https://github.com/nix-community/home-manager/issues/8232
-        gtk4.theme = null;
+        gtk4.theme = config.gtk.theme;
       };
 
       dconf.settings = {
