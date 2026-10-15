@@ -28,7 +28,7 @@
           };
 
           colors = {
-            background = "${clr.base00}e6";
+            background = "${clr.base00}ff";
             text = "${clr.base05}ff";
             placeholder = "${clr.base03}ff";
             prompt = "${clr.base05}ff";
