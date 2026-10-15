@@ -79,4 +79,16 @@
         };
       };
     };
+
+  flake.modules.homeManager.mako = {
+    services.mako.settings = {
+      "app-name=lock" = {
+        layer = "overlay";
+        anchor = "center";
+        text-alignment = "center";
+        history = 0;
+        width = 200;
+      };
+    };
+  };
 }
