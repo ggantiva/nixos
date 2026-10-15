@@ -77,7 +77,42 @@
 
               all_targets=$(printf '%s\n' "''${targets[@]}" | sort -u)
 
-              SELECTED=$(echo "$all_targets" | fzf --style full --reverse --prompt="Select Session: ")
+              set +e
+              raw_output=$(echo "$all_targets" | fzf \
+                --style full \
+                --reverse \
+                --prompt="Select Session: " \
+                --header="[Enter] Open  |  [Ctrl-N] Create project" \
+                --expect=ctrl-n \
+                --print-query)
+              fzf_status=$?
+              set -e
+
+              if [ "$fzf_status" -ne 0 ] && [ "$fzf_status" -ne 1 ]; then
+                exit 0
+              fi
+
+              mapfile -t fzf_output <<< "$raw_output"
+              query="''${fzf_output[0]:-}"
+              key="''${fzf_output[1]:-}"
+              selected="''${fzf_output[2]:-}"
+
+              if [ "$key" = "ctrl-n" ]; then
+                target="''${query:-$selected}"
+                target="''${target##*/}"
+                target="''${target// /_}"
+
+                if [ -z "$target" ]; then
+                  exit 0
+                fi
+
+                if [ -d "$DEV_DIR" ]; then
+                  mkdir -p "$DEV_DIR/$target"
+                fi
+                SELECTED="$target"
+              else
+                SELECTED="$selected"
+              fi
 
               if [ -z "$SELECTED" ]; then
                 exit 0
