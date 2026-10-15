@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.mako =
-    { config, ... }:
+    { config, pkgs, ... }:
     let
       clr = config.scheme.withHashtag;
     in
@@ -15,6 +15,7 @@
           background-color = "${clr.base01}";
           border-color = "${clr.base08}";
           progress-color = "over ${clr.base08}e6";
+          on-notify = "exec ${pkgs.mpv}/bin/mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/message.oga";
         };
       };
     };
