@@ -14,6 +14,7 @@
         searx
         homepage
         speedtest
+        calibre-web-automated
       ];
 
       home-manager.users.ggantiva.imports = with self.modules.homeManager; [
