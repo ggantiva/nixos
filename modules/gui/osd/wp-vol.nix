@@ -23,7 +23,7 @@
     };
 
   flake.modules.homeManager.mako =
-    { config, ... }:
+    { config, pkgs, ... }:
     let
       clr = config.scheme.withHashtag;
     in
@@ -38,6 +38,7 @@
           format = "<b>%s</b>\\n%b";
           outer-margin = 30;
           width = 250;
+          on-notify = "exec ${pkgs.mpv}/bin/mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/audio-volume-change.oga";
         };
 
         "app-name=volume group-index=0" = {
