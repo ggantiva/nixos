@@ -18,7 +18,7 @@
       imports = with self.modules.nixos; [ podman ];
       virtualisation.oci-containers.containers = {
         "calibre-web-automated" = {
-          image = "crocodilestick/calibre-web-automated:v4.0.8";
+          image = "docker.io/crocodilestick/calibre-web-automated:v4.0.8";
           environment = {
             PUID = "1000";
             PGID = gid;
