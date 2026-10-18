@@ -37,10 +37,10 @@
       domain = "${subdomain}.${config.constants.domain}";
     in
     lib.mkIf config.services.sonarr.enable {
-      sops.secrets.homepage-sonarr = { };
+      sops.secrets."homepage/sonarr" = { };
 
       custom.homepage = {
-        environmentFiles = [ config.sops.secrets.homepage-sonarr.path ];
+        environmentFiles = [ config.sops.secrets."homepage/sonarr".path ];
 
         services.sonarr = {
           group = "Media";

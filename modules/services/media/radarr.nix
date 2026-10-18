@@ -37,10 +37,10 @@
       domain = "${subdomain}.${config.constants.domain}";
     in
     lib.mkIf config.services.radarr.enable {
-      sops.secrets.homepage-radarr = { };
+      sops.secrets."homepage/radarr" = { };
 
       custom.homepage = {
-        environmentFiles = [ config.sops.secrets.homepage-radarr.path ];
+        environmentFiles = [ config.sops.secrets."homepage/radarr".path ];
         services.radarr = {
           group = "Media";
           name = "Radarr";

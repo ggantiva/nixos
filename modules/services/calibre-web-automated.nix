@@ -59,9 +59,9 @@
       domain = "${subdomain}.${config.constants.domain}";
     in
     lib.mkIf (config.virtualisation.oci-containers.containers ? calibre-web-automated) {
-      sops.secrets.homepage-calibre = { };
+      sops.secrets."homepage/calibre" = { };
       custom.homepage = {
-        environmentFiles = [ config.sops.secrets.homepage-calibre.path ];
+        environmentFiles = [ config.sops.secrets."homepage/calibre".path ];
         services.calibre-web = {
           group = "Media";
           name = "Calibre Web";

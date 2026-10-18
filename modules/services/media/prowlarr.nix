@@ -44,10 +44,10 @@
       domain = "${subdomain}.${config.constants.domain}";
     in
     lib.mkIf config.services.prowlarr.enable {
-      sops.secrets.homepage-prowlarr = { };
+      sops.secrets."homepage/prowlarr" = { };
 
       custom.homepage = {
-        environmentFiles = [ config.sops.secrets.homepage-prowlarr.path ];
+        environmentFiles = [ config.sops.secrets."homepage/prowlarr".path ];
         services.prowlarr = {
           group = "Media";
           name = "Prowlarr";

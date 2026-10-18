@@ -37,10 +37,10 @@
       domain = "${subdomain}.${config.constants.domain}";
     in
     lib.mkIf config.services.jellyfin.enable {
-      sops.secrets.homepage-jellyfin = { };
+      sops.secrets."homepage/jellyfin" = { };
 
       custom.homepage = {
-        environmentFiles = [ config.sops.secrets.homepage-jellyfin.path ];
+        environmentFiles = [ config.sops.secrets."homepage/jellyfin".path ];
 
         services.jellyfin = {
           group = "Media";

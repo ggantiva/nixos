@@ -69,10 +69,10 @@
       domain = "${subdomain}.${config.constants.domain}";
     in
     lib.mkIf config.services.qbittorrent.enable {
-      sops.secrets.homepage-qbittorrent = { };
+      sops.secrets."homepage/qbittorrent" = { };
 
       custom.homepage = {
-        environmentFiles = [ config.sops.secrets.homepage-qbittorrent.path ];
+        environmentFiles = [ config.sops.secrets."homepage/qbittorrent".path ];
         services.qbittorrent = {
           group = "Media";
           name = "qBittorrent";
