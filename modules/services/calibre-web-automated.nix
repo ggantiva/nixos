@@ -19,6 +19,7 @@
       virtualisation.oci-containers.containers = {
         "calibre-web-automated" = {
           image = "docker.io/crocodilestick/calibre-web-automated:v4.0.8";
+          environmentFiles = [ config.sops.secrets.hardcover-key.path ];
           environment = {
             PUID = "1000";
             PGID = gid;
@@ -34,6 +35,8 @@
           ports = [ "${toString port}:8083" ];
         };
       };
+
+      sops.secrets.hardcover-key = { };
 
       systemd.tmpfiles.rules = [
         "d ${dataDir}    0755 1000 ${gid} - -"
