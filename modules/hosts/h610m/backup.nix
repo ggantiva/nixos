@@ -13,6 +13,7 @@
 
         ${pkgs.rsync}/bin/rsync -avz --delete \
           --exclude='/.history' \
+          --exclude='icon_cache' \
           --backup --backup-dir="$DEST/.history/$TIMESTAMP" \
           -e "${pkgs.openssh}/bin/ssh -p 2428 -i /home/${user}/.ssh/id_backup -o StrictHostKeyChecking=accept-new" \
           backup@192.168.5.4:/data/backups/ \
