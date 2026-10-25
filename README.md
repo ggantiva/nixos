@@ -46,13 +46,13 @@ depending on their role.
 1. Clone the repository.
 
 ```bash
-git clone https://codeberg.org/ggantiva/nixos
+$ git clone https://github.com/ggantiva/nixos
 ```
 
 2. Change directory.
 
 ```bash
-cd nixos
+$ cd nixos
 ```
 
 3. Run disko with the defined system flake. Keep in mind that the following
@@ -61,13 +61,13 @@ cd nixos
    backups as needed.
 
 ```bash
-nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount --flake .#<System>
+# nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount --flake .#<System>
 ```
 
 4. Install NixOS
 
 ```bash
-nixos-install --flake .#<hostname> --no-root-passwd
+# nixos-install --flake .#<hostname> --no-root-passwd
 ```
 
 ## Adding new systems
