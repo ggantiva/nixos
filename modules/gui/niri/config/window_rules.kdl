@@ -20,19 +20,3 @@ window-rule {
   match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
   default-floating-position x=10 y=10 relative-to="bottom-right"
 }
-
-// Shadows and blur for floating windows
-window-rule {
-  match is-floating=true
-  background-effect {
-    blur true
-    xray false
-  }
-  shadow {
-    on
-    draw-behind-window false
-    spread 5
-    offset x=10 y=10
-    softness 15
-  }
-}
