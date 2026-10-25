@@ -2,7 +2,7 @@ keys:
   - &users:
     - &ggantiva age1mthykpauy7elxz3dftg2n9pgpkwxj5v9qfdnn6847fy9k3euqu9qx5w8tz
   - &hosts:
-    - &h610m age1x8pasvd5gw6e2ykeestj5d3przl5rspq8r2uw0k6qtrpps7emuaqwna8ht
+    - &h610m age1fzyjx6ttht66drferayqat8fp86586hsatxypx8ua5pel5vv2f8s37e7vc
     - &hp705 age124wcc0rlayk8lz4sdr2t48zg4rv4kv4h84t4r43dnd9tuak2hcuqj05v8k
 creation_rules:
   - path_regex: secrets.yaml$
