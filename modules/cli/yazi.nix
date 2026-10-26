@@ -14,7 +14,7 @@
 
         settings = {
           mgr = {
-            show_hidden = true;
+            show_hidden = false;
             ratio = [
               1
               2
