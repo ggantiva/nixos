@@ -5,6 +5,7 @@
     {
       imports = with self.modules.nixos; [
         system-cli
+        plymouth
         pipewire
         yubikey
         network-manager
