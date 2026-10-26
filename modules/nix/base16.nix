@@ -1,6 +1,6 @@
 { inputs, ... }:
 let
-  schemePath = "${inputs.tt-schemes}/base16/vesper.yaml";
+  schemePath = "${inputs.tt-schemes}/base16/flexoki-dark.yaml";
 in
 {
   flake.theme = {
@@ -10,7 +10,8 @@ in
       (inputs.base16.lib {
         inherit pkgs;
         inherit (pkgs) lib;
-      }).mkSchemeAttrs schemePath;
+      }).mkSchemeAttrs
+        schemePath;
   };
 
   flake.modules.nixos.base16 = {
