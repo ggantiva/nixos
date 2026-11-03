@@ -9,6 +9,7 @@
         ggantiva
 
         media-server
+        grafana
         caddy
         vaultwarden
         searx
