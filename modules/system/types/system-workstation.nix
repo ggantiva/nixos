@@ -32,6 +32,10 @@
         };
       };
 
+      services.udisks2 = {
+        enable = true;
+      };
+
       fonts = {
         packages = with pkgs; [
           liberation_ttf
