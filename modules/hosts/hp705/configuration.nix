@@ -10,6 +10,7 @@
 
         media-server
         grafana
+        home-assistant
         caddy
         vaultwarden
         searx
