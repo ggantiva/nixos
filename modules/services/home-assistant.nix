@@ -1,6 +1,6 @@
 {
   flake.modules.nixos.home-assistant =
-    { config, ... }:
+    { config, pkgs, ... }:
     let
       subdomain = "hass";
       domain = "${subdomain}.${config.constants.domain}";
@@ -34,6 +34,10 @@
           "shopping_list"
           "isal"
           "tuya"
+        ];
+
+        customComponents = [
+          pkgs.home-assistant-custom-components.tuya_local
         ];
       };
 
