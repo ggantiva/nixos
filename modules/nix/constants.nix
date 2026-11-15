@@ -15,7 +15,7 @@
         user = "ggantiva";
         domain = "ggantiva.com";
         wallpaper = pkgs.fetchurl {
-          url = "https://w.wallhaven.cc/full/21/wallhaven-216z59.jpg";
+          url = "https://w.wallhaven.cc/full/qz/wallhaven-qzodor.jpg";
           hash = "sha256-V4TLEDHMLVezADMwbclK2MIZK2c3w3EumaSXg35ntG8=";
         };
       };
