@@ -1,3 +1,9 @@
+{ self, lib, ... }:
+let
+  hp705Config = self.nixosConfigurations.hp705.config or { };
+  homepageEnabled = hp705Config.services.homepage-dashboard.enable or false;
+  homepageUrl = if homepageEnabled then "https://${hp705Config.custom.homepage.domain}" else "";
+in
 {
   flake.modules.homeManager.librewolf = {
     programs.librewolf = {
@@ -13,6 +19,10 @@
         "browser.fullscreen.autohide" = false;
         "browser.search.separatePrivateDefault.ui.enabled" = false;
         "browser.search.separatePrivateDefault" = false;
+      }
+      // lib.optionalAttrs homepageEnabled {
+        "browser.startup.page" = 1;
+        "browser.startup.homepage" = homepageUrl;
       };
 
       policies = {
@@ -89,6 +99,13 @@
             installation_mode = "force_installed";
             private_browsing = true;
           };
+        };
+      }
+      // lib.optionalAttrs homepageEnabled {
+        Homepage = {
+          URL = homepageUrl;
+          StartPage = "homepage";
+          Locked = false;
         };
       };
     };
