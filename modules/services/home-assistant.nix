@@ -65,4 +65,20 @@
 
       custom.impermanence.root.directories = [ config.services.home-assistant.configDir ];
     };
+  flake.modules.nixos.homepage =
+    { config, lib, ... }:
+    let
+      subdomain = "vault";
+      domain = "${subdomain}.${config.constants.domain}";
+    in
+    lib.mkIf config.services.home-assistant.enable {
+      custom.homepage.services.home-assistant = {
+        group = "Utilities";
+        name = "Home Assistant";
+        icon = "home-assistant.png";
+        href = "https://${domain}";
+        description = "Home Automation";
+        siteMonitor = "https://${domain}";
+      };
+    };
 }
