@@ -1,8 +1,6 @@
 {
   flake.modules.nixos.boot = {
     boot = {
-      # Enable stage-1 bootloader
-      initrd.systemd.enable = true;
       loader = {
         efi.canTouchEfiVariables = true;
         systemd-boot = {
