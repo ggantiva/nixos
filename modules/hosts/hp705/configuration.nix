@@ -15,7 +15,7 @@
         searx
         homepage
         speedtest
-        calibre-web-automated
+        bookorbit
       ];
 
       home-manager.users.ggantiva.imports = with self.modules.homeManager; [
